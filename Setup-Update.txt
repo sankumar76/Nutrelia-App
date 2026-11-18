@@ -1,0 +1,4 @@
+Completed the configuration up to "Step 8 — Choose your permission level"
+GitHub "New fine-grained personal access token" not generated yet
+
+
