@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Two pictures of the Diary page: without a header search box and with a quick search box at the top, plus the typing state.">
+<title>Nutrelia Q19 header search</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--pg-bg:#f8fafc;--pg-surface:#ffffff;--pg-surface2:#f1f5f9;--pg-border:#cbd5e1;--pg-text:#0f172a;--pg-text2:#475569;--pg-link:#1d4ed8;--pg-ok:#14703a;--pg-ok-bg:#e3f4e9;--pg-bad:#a8102a;--pg-bad-bg:#fbe9ec;--pg-focus:#1d4ed8}
+@media (prefers-color-scheme:dark){:root{--pg-bg:#0b1120;--pg-surface:#1e293b;--pg-surface2:#273449;--pg-border:#475569;--pg-text:#f8fafc;--pg-text2:#cbd5e1;--pg-link:#93c5fd;--pg-ok:#4ade80;--pg-ok-bg:#12351f;--pg-bad:#fda4af;--pg-bad-bg:#3b1620;--pg-focus:#93c5fd}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--pg-bg);color:var(--pg-text);font:400 14px/1.55 'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased;overflow-wrap:anywhere}
+h1,h2,h3,p,ul,ol,figure,dl{margin:0;padding:0}
+ul,ol{padding-left:20px}
+li{margin:2px 0}
+a{color:var(--pg-link);font-weight:600}
+:focus-visible{outline:3px solid var(--pg-focus);outline-offset:2px}
+code{font:600 12px/1.4 ui-monospace,Consolas,monospace;background:var(--pg-surface2);padding:1px 5px;border-radius:6px;overflow-wrap:anywhere}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px 48px}
+.hero{padding:32px 0 8px;display:flex;flex-direction:column;gap:12px}
+.hero h1{font-size:28px;line-height:1.2;font-weight:700}
+.lede{color:var(--pg-text2);max-width:760px}
+.sec{padding:32px 0 0;display:flex;flex-direction:column;gap:16px;border-top:1px solid var(--pg-border);margin-top:32px}
+.sec h2{font-size:22px;line-height:1.25;font-weight:700}
+.sec h3{font-size:16px;font-weight:600}
+.card{background:var(--pg-surface);border:1px solid var(--pg-border);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.note{border-left:4px solid var(--pg-link);background:var(--pg-surface);border-radius:12px;padding:12px 16px;border-top:1px solid var(--pg-border);border-right:1px solid var(--pg-border);border-bottom:1px solid var(--pg-border)}
+.pill{display:inline-flex;align-items:center;padding:0 10px;min-height:24px;border-radius:999px;font-size:12px;font-weight:700;background:var(--pg-ok-bg);color:var(--pg-ok)}
+.pill.neutral{background:var(--pg-surface2);color:var(--pg-text2)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:640px){.two{grid-template-columns:1fr}}
+.scroller{overflow-x:auto;max-width:100%;border-radius:12px;border:1px solid var(--pg-border)}
+.scroller:focus-visible{outline-offset:-3px}
+.scroller>.mock{border:0;border-radius:0}
+.sw{display:flex;gap:4px;flex-wrap:wrap}
+.sw i{display:block;width:28px;height:28px;border-radius:8px;border:1px solid rgba(128,128,128,.4)}
+.ptbl{border-collapse:collapse;width:100%;min-width:640px;font-size:13px}
+.ptbl th,.ptbl td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--pg-border);vertical-align:top}
+.ptbl thead th{background:var(--pg-surface2);font-weight:700;white-space:nowrap}
+.ptbl td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.chip{display:inline-block;width:14px;height:14px;border-radius:4px;border:1px solid rgba(128,128,128,.55);vertical-align:-2px;margin-right:6px}
+.ok{color:var(--pg-ok);font-weight:700}
+.bad{color:var(--pg-bad);font-weight:700}
+.cap{color:var(--pg-text2);font-size:13px}
+.pc h3{margin-bottom:4px}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--pg-text2)}
+.meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.frame-t{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.mock{width:1000px;display:flex;align-items:stretch;background:var(--bg);color:var(--text);font:400 14px/1.5 'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;border:1px solid var(--border);border-radius:12px;overflow:hidden;text-align:left}
+.mock *{box-sizing:border-box}
+.mock ul{list-style:none;margin:0;padding:0}
+.mock h3,.mock p{margin:0}
+.mock .i{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.mock .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.mock .num{font-variant-numeric:tabular-nums}
+.mock .n{text-align:right;font-variant-numeric:tabular-nums}
+.mock .muted{color:var(--text2)}
+.mock .small{font-size:12px}
+.mock .side{width:216px;flex:none;background:var(--nav-bg);color:var(--nav-text);padding:16px 12px;display:flex;flex-direction:column;gap:4px;border-right:1px solid var(--nav-border)}
+.mock .logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:18px;padding:4px 8px;margin-bottom:12px}
+.mock .mark{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--logo-a),var(--logo-b));display:grid;place-items:center;color:var(--logo-ink)}
+.mock .cta{display:flex;align-items:center;justify-content:center;gap:8px;min-height:40px;border-radius:10px;background:var(--nav-cta-bg);color:var(--nav-cta-text);border:1px solid var(--nav-cta-border,transparent);font-weight:600;margin-bottom:8px}
+.mock .sep{margin:12px 12px 4px;color:var(--nav-muted);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.mock .ni{display:flex;align-items:center;gap:12px;min-height:40px;padding:0 12px;border-radius:10px;font-weight:600;color:var(--nav-text)}
+.mock .ni.on{background:var(--nav-active-bg);color:var(--nav-active-text);box-shadow:inset 4px 0 0 var(--nav-bar)}
+.mock .ucard{margin-top:auto;padding-top:8px;display:flex;flex-direction:column;gap:8px}
+.mock .who{display:flex;align-items:center;gap:12px;padding:12px 8px 0;border-top:1px solid color-mix(in srgb,var(--nav-muted) 35%,transparent)}
+.mock .av{width:40px;height:40px;border-radius:999px;display:grid;place-items:center;background:var(--nav-active-bg);color:var(--nav-active-text);font-weight:700;flex:none}
+.mock .who span.t{display:flex;flex-direction:column;min-width:0}
+.mock .who b{font-weight:600}
+.mock .who small{color:var(--nav-muted);font-size:12px}
+.mock .ulinks{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.mock .ulinks span{display:flex;align-items:center;justify-content:center;gap:6px;min-height:32px;font-size:12px;font-weight:600;border-radius:10px}
+.mock .col{flex:1;min-width:0;display:flex;flex-direction:column}
+.mock .main{flex:1;min-width:0;padding:24px;display:flex;flex-direction:column;gap:16px}
+.mock .head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.mock .h1{font-size:24px;font-weight:700;line-height:1.25}
+.mock .h2{font-size:16px;font-weight:600;line-height:1.3}
+.mock .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:0 16px;border-radius:10px;border:1px solid transparent;font:600 14px/1 'Inter',system-ui,sans-serif;white-space:nowrap}
+.mock .btn-p{background:var(--brand);color:var(--on-brand)}
+.mock .btn-s{background:transparent;color:var(--brand-ink);border-color:var(--field-border)}
+.mock .btn-g{background:transparent;color:var(--brand-ink)}
+.mock .btn-round{width:40px;padding:0;border-radius:999px}
+.mock .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.mock .tbl{width:100%;border-collapse:collapse;table-layout:fixed}
+.mock .tbl th{padding:12px 12px;text-align:left;font-size:12px;font-weight:600;white-space:nowrap}
+.mock .tbl th.n{text-align:right}
+.mock .tbl thead th{background:var(--th-bg);color:var(--th-text);border-bottom:3px solid var(--th-line)}
+.mock .tbl thead th.m{box-shadow:none;border-bottom:3px solid var(--c)}
+.mock .tbl thead th.m:before{content:"";display:inline-block;width:8px;height:8px;border-radius:999px;background:var(--c);margin-right:6px;box-shadow:0 0 0 2px var(--th-text)}
+.mock .tbl thead tr.mealband th{background:var(--band-bg);color:var(--text);font-size:14px;font-weight:700;padding:0 12px;height:40px;border-bottom:1px solid var(--border);box-shadow:none}
+.mock .tbl thead tr.mealband th:first-child{box-shadow:inset 4px 0 0 var(--nav-bar)}
+.mock .tbl td{padding:10px 12px;border-bottom:1px solid var(--border);white-space:nowrap}
+.mock .tbl td:first-child{overflow:hidden;text-overflow:ellipsis}
+.mock .tbl tbody tr:nth-child(even) td{background:var(--zebra)}
+.mock .tbl tbody tr:hover td{background:var(--row-hover)}
+.mock .tbl tbody tr:last-child td{border-bottom:0}
+.mock .tbl tfoot td{background:var(--foot);font-weight:700}
+.mock .tbl tfoot tr.tot td{border-top:2px solid var(--text2)}
+.mock .tbl tfoot tr.rem td{border-top:1px solid var(--border);font-weight:600}
+.mock .carbs{--c:var(--carbs)}.mock .fat{--c:var(--fat)}.mock .protein{--c:var(--protein)}.mock .fiber{--c:var(--fiber)}
+.mock .s-ok{color:var(--success);font-weight:700}.mock .s-warn{color:var(--warning);font-weight:700}.mock .s-bad{color:var(--error);font-weight:700}
+.mock .badge{display:inline-flex;align-items:center;gap:4px;padding:0 8px;min-height:20px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap}
+.mock .badge.ok{background:color-mix(in srgb,var(--success) 14%,var(--surface));color:var(--success)}
+.mock .badge.warn{background:color-mix(in srgb,var(--warning) 14%,var(--surface));color:var(--warning)}
+.mock .badge.bad{background:color-mix(in srgb,var(--error) 14%,var(--surface));color:var(--error)}
+.mock .badge.src{background:var(--surface2);color:var(--text2);border:1px solid var(--border)}
+.mock .legend{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:12px;color:var(--text2)}
+.mock .fcell{display:flex;align-items:center;gap:8px;min-width:0}
+.mock .tools{display:flex;gap:8px;align-items:center}
+.mock .field{display:flex;align-items:center;gap:8px;min-height:40px;padding:0 12px;border:1px solid var(--field-border);border-radius:10px;background:var(--surface);color:var(--text)}
+.mock .field input{border:0;background:transparent;color:inherit;font:inherit;outline:0;flex:1;min-width:0}
+.mock .field input::placeholder{color:var(--text2)}
+.mock .fl{border:1px solid var(--border);border-radius:12px;background:var(--surface);overflow:hidden}
+.mock .fr{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"a add" "b add" "c c";column-gap:12px;row-gap:2px;align-items:center;padding:8px 12px;border-bottom:1px solid var(--border)}
+.mock .fr:last-child{border-bottom:0}
+.mock .fr.hov{background:var(--surface2)}
+.mock .fr-1{grid-area:a;display:flex;align-items:center;gap:8px;min-width:0}
+.mock .fr-name{font-weight:700}
+.mock .fr-2{grid-area:b;font-size:12px;color:var(--text2)}
+.mock .fr-3{grid-area:c;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px 16px;font-size:12px;padding-top:4px}
+.mock .fr-n{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px;color:var(--text2)}
+.mock .fr-n b{color:var(--text);font-weight:600}
+.mock .fr-n .kc b{font-size:14px}
+.mock .mn{display:inline-flex;align-items:center;gap:4px}
+.mock .mn .dot{width:8px;height:8px;border-radius:999px;background:var(--c);flex:none}
+.mock .sepd{color:var(--border)}
+.mock .fr-amt{display:flex;align-items:center;gap:8px;color:var(--text2);margin-left:auto}
+.mock .fr-amt label{font-weight:600;white-space:nowrap}
+.mock .cmp{height:28px;padding:0 8px;font:inherit;font-size:12px;border:1px solid var(--field-border);border-radius:8px;background:var(--surface);color:var(--text)}
+.mock input.cmp{width:56px;text-align:right}
+.mock select.cmp{width:144px}
+.mock .fr-add{grid-area:add}
+.mock :focus-visible{outline:3px solid var(--brand-ink);outline-offset:2px}
+
+.cur{--bg:#f8fafc;--surface:#ffffff;--surface2:#f1f5f9;--border:#cbd5e1;--field-border:#94a3b8;--text:#0f172a;--text2:#475569;--brand:#15803d;--brand-hover:#166534;--on-brand:#ffffff;--brand-ink:#15803d;--nav-bg:linear-gradient(180deg,#14532d,#166534);--nav-text:#f0fdf4;--nav-muted:#bbf7d0;--nav-active-bg:#ffffff;--nav-active-text:#14532d;--nav-bar:#22c55e;--nav-cta-bg:rgba(255,255,255,.14);--nav-cta-text:#ffffff;--nav-cta-border:rgba(255,255,255,.7);--nav-border:transparent;--th-bg:#1e293b;--th-text:#f8fafc;--th-line:#1e293b;--band-bg:#e6f4ea;--zebra:rgba(15,23,42,.035);--foot:#f5f7fa;--row-hover:rgba(21,128,61,.08);--success:#15803d;--warning:#a16207;--error:#b91c1c;--carbs:#2563eb;--fat:#c2410c;--protein:#7c3aed;--fiber:#0f766e;--logo-a:#22c55e;--logo-b:#3b82f6;--logo-ink:#ffffff}
+@media (prefers-color-scheme:dark){.cur{--bg:#0b1120;--surface:#1e293b;--surface2:#273449;--border:#475569;--field-border:#64748b;--text:#f8fafc;--text2:#cbd5e1;--brand:#4ade80;--brand-hover:#86efac;--on-brand:#052e16;--brand-ink:#4ade80;--nav-bg:linear-gradient(180deg,#052e16,#0b3d22);--nav-text:#f0fdf4;--nav-muted:#86efac;--nav-active-bg:#dcfce7;--nav-active-text:#052e16;--nav-bar:#22c55e;--nav-cta-bg:rgba(255,255,255,.14);--nav-cta-text:#ffffff;--nav-cta-border:rgba(255,255,255,.7);--nav-border:transparent;--th-bg:#334155;--th-text:#f8fafc;--th-line:#334155;--band-bg:#173a2a;--zebra:rgba(255,255,255,.04);--foot:#273449;--row-hover:rgba(74,222,128,.10);--success:#4ade80;--warning:#facc15;--error:#f87171;--carbs:#60a5fa;--fat:#fb923c;--protein:#a78bfa;--fiber:#2dd4bf;--logo-a:#22c55e;--logo-b:#3b82f6;--logo-ink:#ffffff}}
+.mock.short{min-height:470px}
+.mock .topbar{display:flex;align-items:center;gap:12px;height:60px;padding:0 24px;background:var(--surface);border-bottom:1px solid var(--border);position:relative;z-index:3}
+.mock .sbox-wrap{position:relative;flex:0 1 400px;min-width:0}
+.mock .sbox{display:flex;align-items:center;gap:8px;height:40px;padding:0 12px;border:1px solid var(--field-border);border-radius:10px;background:var(--bg);color:var(--text)}
+.mock .sbox input{border:0;background:transparent;color:inherit;font:inherit;outline:0;flex:1;min-width:0}
+.mock .sbox input::placeholder{color:var(--text2)}
+.mock .sbox kbd{font:600 12px/1 'Inter',sans-serif;border:1px solid var(--field-border);border-bottom-width:2px;border-radius:6px;padding:3px 7px;color:var(--text2);background:var(--surface)}
+.mock .sbox.focus{border-color:var(--brand-ink);outline:3px solid var(--brand-ink);outline-offset:2px;background:var(--surface)}
+.mock .grow{flex:1}
+.mock .iconbtn{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;color:var(--text2);position:relative}
+.mock .iconbtn b{position:absolute;top:4px;right:4px;min-width:16px;height:16px;border-radius:999px;background:var(--error);color:#fff;font-size:11px;display:grid;place-items:center;padding:0 4px}
+.mock .av2{width:36px;height:36px;border-radius:999px;background:color-mix(in srgb,var(--brand) 16%,transparent);color:var(--brand-ink);display:grid;place-items:center;font-weight:700;font-size:13px}
+.mock .dd{position:absolute;top:48px;left:0;width:520px;max-width:calc(100vw - 32px);background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:0 12px 32px rgba(15,23,42,.22);overflow:hidden;z-index:5}
+.mock .dd-h{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 12px;font-size:12px;color:var(--text2);border-bottom:1px solid var(--border);background:var(--surface2)}
+.mock .dd-h b{color:var(--text);font-weight:600}
+.mock .sel{display:inline-flex;align-items:center;gap:6px;min-height:28px;padding:0 10px;border:1px solid var(--field-border);border-radius:8px;background:var(--surface);color:var(--text);font-weight:600;font-size:12px}
+.mock .dd-r{display:flex;align-items:center;gap:12px;padding:8px 12px;border-bottom:1px solid var(--border)}
+.mock .dd-r.hov{background:var(--row-hover)}
+.mock .dd-r .t{flex:1;min-width:0;display:flex;flex-direction:column}
+.mock .dd-r .t b{font-weight:700}
+.mock .dd-r mark{background:color-mix(in srgb,var(--brand) 22%,transparent);color:inherit;border-radius:3px}
+.mock .dd-r .k{font-size:12px;color:var(--text2)}
+.mock .dd-f{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;background:var(--surface2);font-size:12px;color:var(--text2)}
+.mock .dd-f .lnk{display:inline-flex;align-items:center;gap:6px;color:var(--brand-ink);font-weight:700;font-size:14px;text-decoration:underline}
+.mock .page-t{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.mock .page-t .btn-p{box-shadow:none}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h12a2 2 0 012 2v14H6a2 2 0 01-2-2zM8 8h6M8 12h6"/></symbol>
+<symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 3c1 4 5 5 5 10a5 5 0 01-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9z"/></symbol>
+<symbol id="i-apple" viewBox="0 0 24 24"><path d="M12 7c-2-2-7-1-7 5s4 9 7 8c3 1 7-2 7-8s-5-7-7-5zM12 7c0-2 1-3 3-4"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><path d="M9 11a3 3 0 100-6 3 3 0 000 6zM3 20c0-3 3-5 6-5s6 2 6 5M17 11a3 3 0 100-6M21 20c0-2-1-4-3-4.5"/></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+<symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></symbol>
+<symbol id="i-out" viewBox="0 0 24 24"><path d="M10 4H5v16h5M15 8l4 4-4 4M19 12H9"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19C5 10 10 5 20 4c0 10-5 15-14 15zM5 19l8-8"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></symbol>
+<symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0112 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 004 0"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-left" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></symbol>
+<symbol id="i-right" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+</defs></svg>
+<div class="wrap">
+<header class="hero">
+<span class="kicker">Nutrelia UX &middot; Round 5 part A &middot; Q19</span>
+<h1>Q19: should every page have a search box at the top?</h1>
+<p class="lede">Both pictures show the Diary page with the current Round 4 design (green menu, table bands). The only difference is a thin bar across the top. Today, searching for a food starts on the Add food or Find a food pages. The question is whether a small &ldquo;Search foods&hellip;&rdquo; box should also sit at the top of every page.</p>
+</header>
+
+<section class="sec" aria-labelledby="h1o"><h2 id="h1o">Option 1: No header search (as today)</h2>
+<div class="scroller" tabindex="0" role="region" aria-label="Option 1, Diary page without header search, scrolls sideways on small screens"><div class="mock cur " role="group" aria-label="Option 1, Diary page without header search (static mock-up)"><nav class="side" aria-label="Main menu (static mock-up)">
+<span class="logo"><span class="mark"><svg class="i" aria-hidden="true"><use href="#i-leaf"/></svg></span>Nutrelia</span>
+<span class="cta"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg>Add food</span>
+<div role="group" aria-label="Track"><span class="sep" aria-hidden="true">Track</span><ul>
+<li class="ni"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg>Home</li><li class="ni on" aria-current="page"><svg class="i" aria-hidden="true"><use href="#i-book"/></svg>Diary</li><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-flame"/></svg>Activity</li><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg>Progress</li></ul></div>
+<div role="group" aria-label="Foods"><span class="sep" aria-hidden="true">Foods</span><ul><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-apple"/></svg>My Foods</li></ul></div>
+<div role="group" aria-label="Social"><span class="sep" aria-hidden="true">Social</span><ul><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg>Friends</li></ul></div>
+<div class="ucard" role="group" aria-label="Account"><div class="who"><span class="av" aria-hidden="true">PS</span><span class="t"><b>Priya S.</b><small>Signed in</small></span></div><div class="ulinks"><span><svg class="i" aria-hidden="true"><use href="#i-gear"/></svg>Settings</span><span><svg class="i" aria-hidden="true"><use href="#i-out"/></svg>Log out</span></div></div>
+</nav><div class="col"><div class="main">
+<div class="page-t"><div><h3 class="h1">Diary</h3><span class="muted">Wednesday, 18 November 2026</span></div><span class="tools"><span class="btn btn-g btn-round" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-left"/></svg></span><span class="btn btn-s">Today</span><span class="btn btn-g btn-round" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-right"/></svg></span><span class="btn btn-p"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg>Add food</span></span></div>
+<div class="card"><table class="tbl"><colgroup><col><col style="width:92px"><col style="width:108px"><col style="width:92px"><col style="width:116px"><col style="width:100px"></colgroup><caption class="sr">Breakfast: foods and nutrients</caption>
+<thead><tr class="mealband"><th scope="colgroup">Breakfast</th><th scope="colgroup" colspan="5" class="n">274 kcal</th></tr><tr><th scope="col">Food</th><th scope="col" class="n">Calories</th><th scope="col" class="n m carbs">Carbs (g)</th><th scope="col" class="n m fat">Fat (g)</th><th scope="col" class="n m protein">Protein (g)</th><th scope="col" class="n m fiber">Fiber (g)</th></tr></thead>
+<tbody><tr><td><span class="fcell"><span>Idli<span class="muted"> &ndash; 3 pieces</span></span></span></td><td class="n">174</td><td class="n">36</td><td class="n">1</td><td class="n">5</td><td class="n">2</td></tr><tr><td><span class="fcell"><span>Sambar<span class="muted"> &ndash; 1 katori</span></span></span></td><td class="n">100</td><td class="n">14</td><td class="n">3</td><td class="n">5</td><td class="n">4</td></tr></tbody>
+<tfoot><tr class="tot"><td>Breakfast total</td><td class="n">274</td><td class="n">50</td><td class="n">4</td><td class="n">10</td><td class="n">6</td></tr></tfoot></table></div>
+<div class="card"><table class="tbl"><colgroup><col><col style="width:92px"><col style="width:108px"><col style="width:92px"><col style="width:116px"><col style="width:100px"></colgroup><caption class="sr">Lunch: foods and nutrients</caption>
+<thead><tr class="mealband"><th scope="colgroup">Lunch</th><th scope="colgroup" colspan="5" class="n">612 kcal</th></tr><tr><th scope="col">Food</th><th scope="col" class="n">Calories</th><th scope="col" class="n m carbs">Carbs (g)</th><th scope="col" class="n m fat">Fat (g)</th><th scope="col" class="n m protein">Protein (g)</th><th scope="col" class="n m fiber">Fiber (g)</th></tr></thead>
+<tbody><tr><td><span class="fcell"><span>Chapathi<span class="muted"> &ndash; 2 medium</span></span></span></td><td class="n">208</td><td class="n">36</td><td class="n">4</td><td class="n">6</td><td class="n">4</td></tr><tr><td><span class="fcell"><span>Dal Tadka<span class="muted"> &ndash; 1 cup</span></span></span></td><td class="n">198</td><td class="n">30</td><td class="n">4</td><td class="n">11</td><td class="n">5</td></tr><tr><td><span class="fcell"><span>Rice, white, cooked<span class="muted"> &ndash; 1 cup</span></span></span></td><td class="n">206</td><td class="n">45</td><td class="n">0</td><td class="n">4</td><td class="n">1</td></tr></tbody>
+<tfoot><tr class="tot"><td>Lunch total</td><td class="n">612</td><td class="n">111</td><td class="n">8</td><td class="n">21</td><td class="n">10</td></tr></tfoot></table></div>
+</div></div></div></div>
+<div class="two">
+<div class="card"><h3>What the user does</h3><p>To find a food, press <b>Add food</b> (in the menu or at the top of the Diary). Choose the meal, then type in the search box on the Add food page. Nothing else on the screen asks for attention.</p></div>
+<div class="card"><h3>Pros and cons</h3><ul><li><b>Pro:</b> simplest and cleanest; more room for the table; one way to do it.</li><li><b>Pro:</b> no duplicate search box on the Add food and Find a food pages.</li><li><b>Con:</b> from Home, Progress or Friends, logging a food takes an extra step (Add food, pick meal, then type).</li></ul></div></div>
+</section>
+
+<section class="sec" aria-labelledby="h2o"><h2 id="h2o">Option 2: Header quick search</h2>
+<div class="scroller" tabindex="0" role="region" aria-label="Option 2, Diary page with header quick search, scrolls sideways on small screens"><div class="mock cur " role="group" aria-label="Option 2, Diary page with header quick search (static mock-up)"><nav class="side" aria-label="Main menu (static mock-up)">
+<span class="logo"><span class="mark"><svg class="i" aria-hidden="true"><use href="#i-leaf"/></svg></span>Nutrelia</span>
+<span class="cta"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg>Add food</span>
+<div role="group" aria-label="Track"><span class="sep" aria-hidden="true">Track</span><ul>
+<li class="ni"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg>Home</li><li class="ni on" aria-current="page"><svg class="i" aria-hidden="true"><use href="#i-book"/></svg>Diary</li><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-flame"/></svg>Activity</li><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg>Progress</li></ul></div>
+<div role="group" aria-label="Foods"><span class="sep" aria-hidden="true">Foods</span><ul><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-apple"/></svg>My Foods</li></ul></div>
+<div role="group" aria-label="Social"><span class="sep" aria-hidden="true">Social</span><ul><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg>Friends</li></ul></div>
+<div class="ucard" role="group" aria-label="Account"><div class="who"><span class="av" aria-hidden="true">PS</span><span class="t"><b>Priya S.</b><small>Signed in</small></span></div><div class="ulinks"><span><svg class="i" aria-hidden="true"><use href="#i-gear"/></svg>Settings</span><span><svg class="i" aria-hidden="true"><use href="#i-out"/></svg>Log out</span></div></div>
+</nav><div class="col"><div class="topbar" role="search" aria-label="Quick search (static mock-up)">
+<div class="sbox-wrap"><label class="sr" for="q-n">Search foods</label>
+<div class="sbox"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg><input id="q-n" placeholder="Search foods&hellip;"><kbd aria-hidden="true">/</kbd></div>
+</div>
+<span class="grow"></span><span class="iconbtn" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-bell"/></svg><b>2</b></span><span class="av2" aria-hidden="true">PS</span></div><div class="main">
+<div class="page-t"><div><h3 class="h1">Diary</h3><span class="muted">Wednesday, 18 November 2026</span></div><span class="tools"><span class="btn btn-g btn-round" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-left"/></svg></span><span class="btn btn-s">Today</span><span class="btn btn-g btn-round" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-right"/></svg></span></span></div>
+<div class="card"><table class="tbl"><colgroup><col><col style="width:92px"><col style="width:108px"><col style="width:92px"><col style="width:116px"><col style="width:100px"></colgroup><caption class="sr">Breakfast: foods and nutrients</caption>
+<thead><tr class="mealband"><th scope="colgroup">Breakfast</th><th scope="colgroup" colspan="5" class="n">274 kcal</th></tr><tr><th scope="col">Food</th><th scope="col" class="n">Calories</th><th scope="col" class="n m carbs">Carbs (g)</th><th scope="col" class="n m fat">Fat (g)</th><th scope="col" class="n m protein">Protein (g)</th><th scope="col" class="n m fiber">Fiber (g)</th></tr></thead>
+<tbody><tr><td><span class="fcell"><span>Idli<span class="muted"> &ndash; 3 pieces</span></span></span></td><td class="n">174</td><td class="n">36</td><td class="n">1</td><td class="n">5</td><td class="n">2</td></tr><tr><td><span class="fcell"><span>Sambar<span class="muted"> &ndash; 1 katori</span></span></span></td><td class="n">100</td><td class="n">14</td><td class="n">3</td><td class="n">5</td><td class="n">4</td></tr></tbody>
+<tfoot><tr class="tot"><td>Breakfast total</td><td class="n">274</td><td class="n">50</td><td class="n">4</td><td class="n">10</td><td class="n">6</td></tr></tfoot></table></div>
+<div class="card"><table class="tbl"><colgroup><col><col style="width:92px"><col style="width:108px"><col style="width:92px"><col style="width:116px"><col style="width:100px"></colgroup><caption class="sr">Lunch: foods and nutrients</caption>
+<thead><tr class="mealband"><th scope="colgroup">Lunch</th><th scope="colgroup" colspan="5" class="n">612 kcal</th></tr><tr><th scope="col">Food</th><th scope="col" class="n">Calories</th><th scope="col" class="n m carbs">Carbs (g)</th><th scope="col" class="n m fat">Fat (g)</th><th scope="col" class="n m protein">Protein (g)</th><th scope="col" class="n m fiber">Fiber (g)</th></tr></thead>
+<tbody><tr><td><span class="fcell"><span>Chapathi<span class="muted"> &ndash; 2 medium</span></span></span></td><td class="n">208</td><td class="n">36</td><td class="n">4</td><td class="n">6</td><td class="n">4</td></tr><tr><td><span class="fcell"><span>Dal Tadka<span class="muted"> &ndash; 1 cup</span></span></span></td><td class="n">198</td><td class="n">30</td><td class="n">4</td><td class="n">11</td><td class="n">5</td></tr><tr><td><span class="fcell"><span>Rice, white, cooked<span class="muted"> &ndash; 1 cup</span></span></span></td><td class="n">206</td><td class="n">45</td><td class="n">0</td><td class="n">4</td><td class="n">1</td></tr></tbody>
+<tfoot><tr class="tot"><td>Lunch total</td><td class="n">612</td><td class="n">111</td><td class="n">8</td><td class="n">21</td><td class="n">10</td></tr></tfoot></table></div>
+</div></div></div></div>
+<div class="two">
+<div class="card"><h3>What the user does</h3><p>On any page, click the &ldquo;Search foods&hellip;&rdquo; box at the top (or press the <b>/</b> key), type a few letters, and a short list of matching foods appears right there. Press the round <b>+</b> to add one, or choose <b>See all results</b> to open the full Find a food page. On a phone the box becomes a magnifier icon that opens full-screen search.</p></div>
+<div class="card"><h3>Pros and cons</h3><ul><li><b>Pro:</b> a food can be found and added from anywhere in two or three taps, without first going to Diary.</li><li><b>Pro:</b> familiar pattern; the <b>/</b> shortcut is quick on a computer.</li><li><b>Con:</b> a fixed 60 px bar on every page, so slightly less room for tables.</li><li><b>Con:</b> a third way to start adding food (menu button, Diary button and search), and the box repeats on the Add food and Find a food pages unless we hide it there.</li></ul></div></div>
+</section>
+
+<section class="sec" aria-labelledby="h3o"><h2 id="h3o">Option 2 in use: typing &ldquo;chap&rdquo;</h2>
+<div class="scroller" tabindex="0" role="region" aria-label="Option 2, header search focused with results, scrolls sideways on small screens"><div class="mock cur short" role="group" aria-label="Option 2, header search focused with results (static mock-up)"><nav class="side" aria-label="Main menu (static mock-up)">
+<span class="logo"><span class="mark"><svg class="i" aria-hidden="true"><use href="#i-leaf"/></svg></span>Nutrelia</span>
+<span class="cta"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg>Add food</span>
+<div role="group" aria-label="Track"><span class="sep" aria-hidden="true">Track</span><ul>
+<li class="ni"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg>Home</li><li class="ni on" aria-current="page"><svg class="i" aria-hidden="true"><use href="#i-book"/></svg>Diary</li><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-flame"/></svg>Activity</li><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg>Progress</li></ul></div>
+<div role="group" aria-label="Foods"><span class="sep" aria-hidden="true">Foods</span><ul><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-apple"/></svg>My Foods</li></ul></div>
+<div role="group" aria-label="Social"><span class="sep" aria-hidden="true">Social</span><ul><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg>Friends</li></ul></div>
+<div class="ucard" role="group" aria-label="Account"><div class="who"><span class="av" aria-hidden="true">PS</span><span class="t"><b>Priya S.</b><small>Signed in</small></span></div><div class="ulinks"><span><svg class="i" aria-hidden="true"><use href="#i-gear"/></svg>Settings</span><span><svg class="i" aria-hidden="true"><use href="#i-out"/></svg>Log out</span></div></div>
+</nav><div class="col"><div class="topbar" role="search" aria-label="Quick search (static mock-up)">
+<div class="sbox-wrap"><label class="sr" for="q-f">Search foods</label>
+<div class="sbox focus"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg><input id="q-f" value="chap"></div>
+<div class="dd" role="listbox" aria-label="Quick results for chap">
+<div class="dd-h"><span><b>Foods matching &ldquo;chap&rdquo;</b></span><span>Add to <span class="sel">Lunch &#9662;</span></span></div>
+<div class="dd-r hov" role="option" aria-selected="true"><span class="t"><b><mark>Chap</mark>athi (whole wheat)</b><span class="k">Nutrelia &middot; 1 medium (40 g) &middot; 104 kcal</span></span><span class="btn btn-s btn-round" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span></div>
+<div class="dd-r" role="option" aria-selected="false"><span class="t"><b><mark>Chap</mark>athi (multigrain)</b><span class="k">Nutrelia &middot; 1 medium (40 g) &middot; 112 kcal</span></span><span class="btn btn-s btn-round" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span></div>
+<div class="dd-r" role="option" aria-selected="false"><span class="t"><b><mark>Chap</mark>ati roll with paneer</b><span class="k">Your foods &middot; 1 roll (150 g) &middot; 290 kcal</span></span><span class="btn btn-s btn-round" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></span></div>
+<div class="dd-f"><span class="lnk">See all results for &ldquo;chap&rdquo; <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span><span>Opens Find a food</span></div></div></div>
+<span class="grow"></span><span class="iconbtn" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-bell"/></svg><b>2</b></span><span class="av2" aria-hidden="true">PS</span></div><div class="main"><div class="page-t"><div><h3 class="h1">Diary</h3><span class="muted">Wednesday, 18 November 2026</span></div></div><div class="card"><table class="tbl"><colgroup><col><col style="width:92px"><col style="width:108px"><col style="width:92px"><col style="width:116px"><col style="width:100px"></colgroup><caption class="sr">Breakfast: foods and nutrients</caption>
+<thead><tr class="mealband"><th scope="colgroup">Breakfast</th><th scope="colgroup" colspan="5" class="n">274 kcal</th></tr><tr><th scope="col">Food</th><th scope="col" class="n">Calories</th><th scope="col" class="n m carbs">Carbs (g)</th><th scope="col" class="n m fat">Fat (g)</th><th scope="col" class="n m protein">Protein (g)</th><th scope="col" class="n m fiber">Fiber (g)</th></tr></thead>
+<tbody><tr><td><span class="fcell"><span>Idli<span class="muted"> &ndash; 3 pieces</span></span></span></td><td class="n">174</td><td class="n">36</td><td class="n">1</td><td class="n">5</td><td class="n">2</td></tr><tr><td><span class="fcell"><span>Sambar<span class="muted"> &ndash; 1 katori</span></span></span></td><td class="n">100</td><td class="n">14</td><td class="n">3</td><td class="n">5</td><td class="n">4</td></tr></tbody>
+<tfoot><tr class="tot"><td>Breakfast total</td><td class="n">274</td><td class="n">50</td><td class="n">4</td><td class="n">10</td><td class="n">6</td></tr></tfoot></table></div></div></div></div></div>
+<div class="two">
+<div class="card"><h3>What the user sees</h3><ol><li>Clicks the box: a green outline shows it is active.</li><li>Types &ldquo;chap&rdquo;: three matching foods drop down, with a + on each and a meal choice (&ldquo;Add to Lunch&rdquo;).</li><li>Presses <b>+</b> to add a food (a toast with Undo appears), or presses <b>See all results for &ldquo;chap&rdquo;</b>, which opens the Find a food page with &ldquo;chap&rdquo; already typed.</li><li>Press Esc or click away to close the list.</li></ol></div>
+<div class="card"><h3>Good to know</h3><ul><li>The list shows the best 3 to 5 matches only; the full list, filters and the Servings and Serving size controls are on Find a food.</li><li>Adding straight from this list uses 1 serving, like the + on the Add food page.</li><li>For screen readers the list is announced as &ldquo;3 results&rdquo; and works with the arrow keys and Enter.</li></ul></div></div>
+</section>
+
+<section class="sec" aria-labelledby="h-sum"><h2 id="h-sum">Side by side</h2>
+<div class="scroller" tabindex="0" role="region" aria-label="Comparison table, scrolls sideways on small screens"><table class="ptbl" style="min-width:560px"><caption class="sr">Option 1 compared with option 2</caption><thead><tr><th scope="col">&nbsp;</th><th scope="col">1. No header search</th><th scope="col">2. Header quick search</th></tr></thead><tbody>
+<tr><th scope="row">Search a food from Home or Progress</th><td>Add food, pick meal, type (3 steps)</td><td>Type in the box at the top (1 step)</td></tr>
+<tr><th scope="row">Screen space</th><td>Full height for content</td><td>60 px less on every page</td></tr>
+<tr><th scope="row">Ways to start adding food</th><td>Two (menu button, Diary button)</td><td>Three (adds the search box)</td></tr>
+<tr><th scope="row">Phone</th><td>No change</td><td>One more icon at the top</td></tr>
+<tr><th scope="row">Build effort</th><td>None (already designed)</td><td>One new header, one dropdown, one shortcut</td></tr></tbody></table></div>
+<p class="note"><b>Designer's lean (only a suggestion):</b> because the menu already has an Add food button, Option 1 is enough for version 1, and Option 2 can be added later without redesigning any page. Choose Option 2 if you expect people to log foods from pages other than the Diary. Santhosh decides.</p>
+</section>
+</div>
+</body>
+</html>

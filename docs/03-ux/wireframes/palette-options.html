@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Four colour palettes for the Nutrelia side menu, tables and status colours, drawn as the same mini website with tokens and contrast results.">
+<title>Nutrelia palette options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--pg-bg:#f8fafc;--pg-surface:#ffffff;--pg-surface2:#f1f5f9;--pg-border:#cbd5e1;--pg-text:#0f172a;--pg-text2:#475569;--pg-link:#1d4ed8;--pg-ok:#14703a;--pg-ok-bg:#e3f4e9;--pg-bad:#a8102a;--pg-bad-bg:#fbe9ec;--pg-focus:#1d4ed8}
+@media (prefers-color-scheme:dark){:root{--pg-bg:#0b1120;--pg-surface:#1e293b;--pg-surface2:#273449;--pg-border:#475569;--pg-text:#f8fafc;--pg-text2:#cbd5e1;--pg-link:#93c5fd;--pg-ok:#4ade80;--pg-ok-bg:#12351f;--pg-bad:#fda4af;--pg-bad-bg:#3b1620;--pg-focus:#93c5fd}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--pg-bg);color:var(--pg-text);font:400 14px/1.55 'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased;overflow-wrap:anywhere}
+h1,h2,h3,p,ul,ol,figure,dl{margin:0;padding:0}
+ul,ol{padding-left:20px}
+li{margin:2px 0}
+a{color:var(--pg-link);font-weight:600}
+:focus-visible{outline:3px solid var(--pg-focus);outline-offset:2px}
+code{font:600 12px/1.4 ui-monospace,Consolas,monospace;background:var(--pg-surface2);padding:1px 5px;border-radius:6px;overflow-wrap:anywhere}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px 48px}
+.hero{padding:32px 0 8px;display:flex;flex-direction:column;gap:12px}
+.hero h1{font-size:28px;line-height:1.2;font-weight:700}
+.lede{color:var(--pg-text2);max-width:760px}
+.sec{padding:32px 0 0;display:flex;flex-direction:column;gap:16px;border-top:1px solid var(--pg-border);margin-top:32px}
+.sec h2{font-size:22px;line-height:1.25;font-weight:700}
+.sec h3{font-size:16px;font-weight:600}
+.card{background:var(--pg-surface);border:1px solid var(--pg-border);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.note{border-left:4px solid var(--pg-link);background:var(--pg-surface);border-radius:12px;padding:12px 16px;border-top:1px solid var(--pg-border);border-right:1px solid var(--pg-border);border-bottom:1px solid var(--pg-border)}
+.pill{display:inline-flex;align-items:center;padding:0 10px;min-height:24px;border-radius:999px;font-size:12px;font-weight:700;background:var(--pg-ok-bg);color:var(--pg-ok)}
+.pill.neutral{background:var(--pg-surface2);color:var(--pg-text2)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:640px){.two{grid-template-columns:1fr}}
+.scroller{overflow-x:auto;max-width:100%;border-radius:12px;border:1px solid var(--pg-border)}
+.scroller:focus-visible{outline-offset:-3px}
+.scroller>.mock{border:0;border-radius:0}
+.sw{display:flex;gap:4px;flex-wrap:wrap}
+.sw i{display:block;width:28px;height:28px;border-radius:8px;border:1px solid rgba(128,128,128,.4)}
+.ptbl{border-collapse:collapse;width:100%;min-width:640px;font-size:13px}
+.ptbl th,.ptbl td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--pg-border);vertical-align:top}
+.ptbl thead th{background:var(--pg-surface2);font-weight:700;white-space:nowrap}
+.ptbl td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.chip{display:inline-block;width:14px;height:14px;border-radius:4px;border:1px solid rgba(128,128,128,.55);vertical-align:-2px;margin-right:6px}
+.ok{color:var(--pg-ok);font-weight:700}
+.bad{color:var(--pg-bad);font-weight:700}
+.cap{color:var(--pg-text2);font-size:13px}
+.pc h3{margin-bottom:4px}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--pg-text2)}
+.meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.frame-t{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.mock{width:1000px;display:flex;align-items:stretch;background:var(--bg);color:var(--text);font:400 14px/1.5 'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;border:1px solid var(--border);border-radius:12px;overflow:hidden;text-align:left}
+.mock *{box-sizing:border-box}
+.mock ul{list-style:none;margin:0;padding:0}
+.mock h3,.mock p{margin:0}
+.mock .i{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.mock .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.mock .num{font-variant-numeric:tabular-nums}
+.mock .n{text-align:right;font-variant-numeric:tabular-nums}
+.mock .muted{color:var(--text2)}
+.mock .small{font-size:12px}
+.mock .side{width:216px;flex:none;background:var(--nav-bg);color:var(--nav-text);padding:16px 12px;display:flex;flex-direction:column;gap:4px;border-right:1px solid var(--nav-border)}
+.mock .logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:18px;padding:4px 8px;margin-bottom:12px}
+.mock .mark{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--logo-a),var(--logo-b));display:grid;place-items:center;color:var(--logo-ink)}
+.mock .cta{display:flex;align-items:center;justify-content:center;gap:8px;min-height:40px;border-radius:10px;background:var(--nav-cta-bg);color:var(--nav-cta-text);border:1px solid var(--nav-cta-border,transparent);font-weight:600;margin-bottom:8px}
+.mock .sep{margin:12px 12px 4px;color:var(--nav-muted);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.mock .ni{display:flex;align-items:center;gap:12px;min-height:40px;padding:0 12px;border-radius:10px;font-weight:600;color:var(--nav-text)}
+.mock .ni.on{background:var(--nav-active-bg);color:var(--nav-active-text);box-shadow:inset 4px 0 0 var(--nav-bar)}
+.mock .ucard{margin-top:auto;padding-top:8px;display:flex;flex-direction:column;gap:8px}
+.mock .who{display:flex;align-items:center;gap:12px;padding:12px 8px 0;border-top:1px solid color-mix(in srgb,var(--nav-muted) 35%,transparent)}
+.mock .av{width:40px;height:40px;border-radius:999px;display:grid;place-items:center;background:var(--nav-active-bg);color:var(--nav-active-text);font-weight:700;flex:none}
+.mock .who span.t{display:flex;flex-direction:column;min-width:0}
+.mock .who b{font-weight:600}
+.mock .who small{color:var(--nav-muted);font-size:12px}
+.mock .ulinks{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.mock .ulinks span{display:flex;align-items:center;justify-content:center;gap:6px;min-height:32px;font-size:12px;font-weight:600;border-radius:10px}
+.mock .col{flex:1;min-width:0;display:flex;flex-direction:column}
+.mock .main{flex:1;min-width:0;padding:24px;display:flex;flex-direction:column;gap:16px}
+.mock .head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.mock .h1{font-size:24px;font-weight:700;line-height:1.25}
+.mock .h2{font-size:16px;font-weight:600;line-height:1.3}
+.mock .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:0 16px;border-radius:10px;border:1px solid transparent;font:600 14px/1 'Inter',system-ui,sans-serif;white-space:nowrap}
+.mock .btn-p{background:var(--brand);color:var(--on-brand)}
+.mock .btn-s{background:transparent;color:var(--brand-ink);border-color:var(--field-border)}
+.mock .btn-g{background:transparent;color:var(--brand-ink)}
+.mock .btn-round{width:40px;padding:0;border-radius:999px}
+.mock .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.mock .tbl{width:100%;border-collapse:collapse;table-layout:fixed}
+.mock .tbl th{padding:12px 12px;text-align:left;font-size:12px;font-weight:600;white-space:nowrap}
+.mock .tbl th.n{text-align:right}
+.mock .tbl thead th{background:var(--th-bg);color:var(--th-text);border-bottom:3px solid var(--th-line)}
+.mock .tbl thead th.m{box-shadow:none;border-bottom:3px solid var(--c)}
+.mock .tbl thead th.m:before{content:"";display:inline-block;width:8px;height:8px;border-radius:999px;background:var(--c);margin-right:6px;box-shadow:0 0 0 2px var(--th-text)}
+.mock .tbl thead tr.mealband th{background:var(--band-bg);color:var(--text);font-size:14px;font-weight:700;padding:0 12px;height:40px;border-bottom:1px solid var(--border);box-shadow:none}
+.mock .tbl thead tr.mealband th:first-child{box-shadow:inset 4px 0 0 var(--nav-bar)}
+.mock .tbl td{padding:10px 12px;border-bottom:1px solid var(--border);white-space:nowrap}
+.mock .tbl td:first-child{overflow:hidden;text-overflow:ellipsis}
+.mock .tbl tbody tr:nth-child(even) td{background:var(--zebra)}
+.mock .tbl tbody tr:hover td{background:var(--row-hover)}
+.mock .tbl tbody tr:last-child td{border-bottom:0}
+.mock .tbl tfoot td{background:var(--foot);font-weight:700}
+.mock .tbl tfoot tr.tot td{border-top:2px solid var(--text2)}
+.mock .tbl tfoot tr.rem td{border-top:1px solid var(--border);font-weight:600}
+.mock .carbs{--c:var(--carbs)}.mock .fat{--c:var(--fat)}.mock .protein{--c:var(--protein)}.mock .fiber{--c:var(--fiber)}
+.mock .s-ok{color:var(--success);font-weight:700}.mock .s-warn{color:var(--warning);font-weight:700}.mock .s-bad{color:var(--error);font-weight:700}
+.mock .badge{display:inline-flex;align-items:center;gap:4px;padding:0 8px;min-height:20px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap}
+.mock .badge.ok{background:color-mix(in srgb,var(--success) 14%,var(--surface));color:var(--success)}
+.mock .badge.warn{background:color-mix(in srgb,var(--warning) 14%,var(--surface));color:var(--warning)}
+.mock .badge.bad{background:color-mix(in srgb,var(--error) 14%,var(--surface));color:var(--error)}
+.mock .badge.src{background:var(--surface2);color:var(--text2);border:1px solid var(--border)}
+.mock .legend{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:12px;color:var(--text2)}
+.mock .fcell{display:flex;align-items:center;gap:8px;min-width:0}
+.mock .tools{display:flex;gap:8px;align-items:center}
+.mock .field{display:flex;align-items:center;gap:8px;min-height:40px;padding:0 12px;border:1px solid var(--field-border);border-radius:10px;background:var(--surface);color:var(--text)}
+.mock .field input{border:0;background:transparent;color:inherit;font:inherit;outline:0;flex:1;min-width:0}
+.mock .field input::placeholder{color:var(--text2)}
+.mock .fl{border:1px solid var(--border);border-radius:12px;background:var(--surface);overflow:hidden}
+.mock .fr{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"a add" "b add" "c c";column-gap:12px;row-gap:2px;align-items:center;padding:8px 12px;border-bottom:1px solid var(--border)}
+.mock .fr:last-child{border-bottom:0}
+.mock .fr.hov{background:var(--surface2)}
+.mock .fr-1{grid-area:a;display:flex;align-items:center;gap:8px;min-width:0}
+.mock .fr-name{font-weight:700}
+.mock .fr-2{grid-area:b;font-size:12px;color:var(--text2)}
+.mock .fr-3{grid-area:c;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px 16px;font-size:12px;padding-top:4px}
+.mock .fr-n{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px;color:var(--text2)}
+.mock .fr-n b{color:var(--text);font-weight:600}
+.mock .fr-n .kc b{font-size:14px}
+.mock .mn{display:inline-flex;align-items:center;gap:4px}
+.mock .mn .dot{width:8px;height:8px;border-radius:999px;background:var(--c);flex:none}
+.mock .sepd{color:var(--border)}
+.mock .fr-amt{display:flex;align-items:center;gap:8px;color:var(--text2);margin-left:auto}
+.mock .fr-amt label{font-weight:600;white-space:nowrap}
+.mock .cmp{height:28px;padding:0 8px;font:inherit;font-size:12px;border:1px solid var(--field-border);border-radius:8px;background:var(--surface);color:var(--text)}
+.mock input.cmp{width:56px;text-align:right}
+.mock select.cmp{width:144px}
+.mock .fr-add{grid-area:add}
+.mock :focus-visible{outline:3px solid var(--brand-ink);outline-offset:2px}
+.pal-a{--bg:#f5faf7;--surface:#ffffff;--surface2:#edf5f0;--border:#d3e0d8;--field-border:#738a7b;--text:#13261c;--text2:#465c4f;--brand:#22c55e;--brand-hover:#16a34a;--on-brand:#052e16;--brand-ink:#166534;--nav-bg:#f0f8f3;--nav-text:#1b3a29;--nav-muted:#4f6b5b;--nav-active-bg:#d5f0df;--nav-active-text:#0d4d2a;--nav-bar:#16a34a;--nav-cta-bg:#22c55e;--nav-cta-text:#052e16;--nav-border:#d3e0d8;--th-bg:#d6eddf;--th-text:#0f3d25;--th-line:#16a34a;--band-bg:#ecf7f0;--zebra:rgba(19,38,28,0.04);--foot:#e6f2eb;--row-hover:rgba(22,163,74,0.08);--success:#14703a;--warning:#8a5a00;--error:#a8102a;--carbs:#2563eb;--fat:#c2410c;--protein:#3b1a85;--fiber:#c026d3;--logo-a:#4ade80;--logo-b:#16a34a;--logo-ink:#052e16}
+@media (prefers-color-scheme:dark){.pal-a{--bg:#0c1a13;--surface:#14261c;--surface2:#1c3327;--border:#2f4a3a;--field-border:#7fa28d;--text:#eef7f1;--text2:#b4c9bb;--brand:#4ade80;--brand-hover:#86efac;--on-brand:#052e16;--brand-ink:#4ade80;--nav-bg:#0f2218;--nav-text:#e8f5ec;--nav-muted:#9cc2aa;--nav-active-bg:#1f4a32;--nav-active-text:#dcfce7;--nav-bar:#4ade80;--nav-cta-bg:#4ade80;--nav-cta-text:#052e16;--nav-border:#2f4a3a;--th-bg:#1f4a35;--th-text:#eaf7ef;--th-line:#4ade80;--band-bg:#17301f;--zebra:rgba(255,255,255,0.04);--foot:#1c3327;--row-hover:rgba(74,222,128,0.10);--success:#4ade80;--warning:#facc15;--error:#f87171;--carbs:#8ec5fc;--fat:#fb923c;--protein:#8160f6;--fiber:#f472d0;--logo-a:#86efac;--logo-b:#22c55e;--logo-ink:#052e16}}
+.pal-b{--bg:#f6f8fb;--surface:#ffffff;--surface2:#eef2f6;--border:#d7dee7;--field-border:#64748b;--text:#0f172a;--text2:#475569;--brand:#0f766e;--brand-hover:#115e59;--on-brand:#ffffff;--brand-ink:#0f766e;--nav-bg:#f1f5f9;--nav-text:#1e293b;--nav-muted:#526277;--nav-active-bg:#d3efec;--nav-active-text:#0b4a45;--nav-bar:#0f766e;--nav-cta-bg:#0f766e;--nav-cta-text:#ffffff;--nav-border:#d7dee7;--th-bg:#1e293b;--th-text:#f8fafc;--th-line:#2dd4bf;--band-bg:#e4f2f1;--zebra:rgba(15,23,42,0.035);--foot:#edf1f6;--row-hover:rgba(15,118,110,0.07);--success:#14703a;--warning:#8a5a00;--error:#a8102a;--carbs:#2563eb;--fat:#c2410c;--protein:#3b1a85;--fiber:#c026d3;--logo-a:#0d9488;--logo-b:#0f766e;--logo-ink:#ffffff}
+@media (prefers-color-scheme:dark){.pal-b{--bg:#0b1220;--surface:#131c2e;--surface2:#1b2740;--border:#2d3b55;--field-border:#7d8ca5;--text:#f1f5f9;--text2:#b6c2d4;--brand:#2dd4bf;--brand-hover:#5eead4;--on-brand:#042f2e;--brand-ink:#2dd4bf;--nav-bg:#0f172a;--nav-text:#e2e8f0;--nav-muted:#9aa8bd;--nav-active-bg:#134e4a;--nav-active-text:#ccfbf1;--nav-bar:#2dd4bf;--nav-cta-bg:#2dd4bf;--nav-cta-text:#042f2e;--nav-border:#2d3b55;--th-bg:#26354f;--th-text:#f8fafc;--th-line:#2dd4bf;--band-bg:#123a3a;--zebra:rgba(255,255,255,0.04);--foot:#1b2740;--row-hover:rgba(45,212,191,0.10);--success:#4ade80;--warning:#fbbf24;--error:#f87171;--carbs:#8ec5fc;--fat:#fb923c;--protein:#8160f6;--fiber:#f472d0;--logo-a:#2dd4bf;--logo-b:#14b8a6;--logo-ink:#042f2e}}
+.pal-c{--bg:#f7f7fc;--surface:#ffffff;--surface2:#efeffa;--border:#dcdcef;--field-border:#70709a;--text:#16162f;--text2:#4b4b6b;--brand:#4f46e5;--brand-hover:#4338ca;--on-brand:#ffffff;--brand-ink:#4338ca;--nav-bg:#1e1b4b;--nav-text:#eef2ff;--nav-muted:#c7d2fe;--nav-active-bg:#e0e7ff;--nav-active-text:#312e81;--nav-bar:#34d399;--nav-cta-bg:#34d399;--nav-cta-text:#052e16;--nav-border:#1e1b4b;--th-bg:#312e81;--th-text:#eef2ff;--th-line:#34d399;--band-bg:#ececfc;--zebra:rgba(22,22,47,0.035);--foot:#eeeefa;--row-hover:rgba(79,70,229,0.07);--success:#14703a;--warning:#8a5a00;--error:#a8102a;--carbs:#0e7490;--fat:#c2410c;--protein:#c026d3;--fiber:#5c9a0b;--logo-a:#6366f1;--logo-b:#4f46e5;--logo-ink:#ffffff}
+@media (prefers-color-scheme:dark){.pal-c{--bg:#0e0d24;--surface:#17163a;--surface2:#1f1e4a;--border:#35346b;--field-border:#8c8bc4;--text:#eef0ff;--text2:#b9bce0;--brand:#818cf8;--brand-hover:#a5b4fc;--on-brand:#1e1b4b;--brand-ink:#a5b4fc;--nav-bg:#0a0920;--nav-text:#e0e7ff;--nav-muted:#a5b4fc;--nav-active-bg:#3730a3;--nav-active-text:#ffffff;--nav-bar:#34d399;--nav-cta-bg:#34d399;--nav-cta-text:#052e16;--nav-border:#35346b;--th-bg:#312e81;--th-text:#eef2ff;--th-line:#34d399;--band-bg:#25235a;--zebra:rgba(255,255,255,0.04);--foot:#1f1e4a;--row-hover:rgba(129,140,248,0.12);--success:#4ade80;--warning:#fbbf24;--error:#f87171;--carbs:#22d3ee;--fat:#fb923c;--protein:#e879f9;--fiber:#d9f06a;--logo-a:#818cf8;--logo-b:#6366f1;--logo-ink:#1e1b4b}}
+.pal-d{--bg:#f7f7f8;--surface:#ffffff;--surface2:#f0f0f2;--border:#dcdce0;--field-border:#71717a;--text:#18181b;--text2:#52525b;--brand:#18181b;--brand-hover:#3f3f46;--on-brand:#ffffff;--brand-ink:#18181b;--nav-bg:#18181b;--nav-text:#fafafa;--nav-muted:#a1a1aa;--nav-active-bg:#2e2e33;--nav-active-text:#ffffff;--nav-bar:#a3e635;--nav-cta-bg:#bef264;--nav-cta-text:#1a2e05;--nav-border:#18181b;--th-bg:#27272a;--th-text:#fafafa;--th-line:#a3e635;--band-bg:#f1f5e4;--zebra:rgba(24,24,27,0.035);--foot:#efeff1;--row-hover:rgba(101,163,13,0.08);--success:#14703a;--warning:#8a5a00;--error:#a8102a;--carbs:#2563eb;--fat:#c2410c;--protein:#3b1a85;--fiber:#c026d3;--logo-a:#d9f99d;--logo-b:#84cc16;--logo-ink:#1a2e05}
+@media (prefers-color-scheme:dark){.pal-d{--bg:#09090b;--surface:#18181b;--surface2:#27272a;--border:#3f3f46;--field-border:#8a8a96;--text:#fafafa;--text2:#c4c4cc;--brand:#fafafa;--brand-hover:#e4e4e7;--on-brand:#18181b;--brand-ink:#fafafa;--nav-bg:#09090b;--nav-text:#fafafa;--nav-muted:#a1a1aa;--nav-active-bg:#27272a;--nav-active-text:#ffffff;--nav-bar:#a3e635;--nav-cta-bg:#bef264;--nav-cta-text:#1a2e05;--nav-border:#27272a;--th-bg:#3f3f46;--th-text:#fafafa;--th-line:#a3e635;--band-bg:#232a12;--zebra:rgba(255,255,255,0.04);--foot:#27272a;--row-hover:rgba(163,230,53,0.08);--success:#4ade80;--warning:#facc15;--error:#f87171;--carbs:#8ec5fc;--fat:#fb923c;--protein:#8160f6;--fiber:#f472d0;--logo-a:#d9f99d;--logo-b:#84cc16;--logo-ink:#1a2e05}}</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h12a2 2 0 012 2v14H6a2 2 0 01-2-2zM8 8h6M8 12h6"/></symbol>
+<symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 3c1 4 5 5 5 10a5 5 0 01-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9z"/></symbol>
+<symbol id="i-apple" viewBox="0 0 24 24"><path d="M12 7c-2-2-7-1-7 5s4 9 7 8c3 1 7-2 7-8s-5-7-7-5zM12 7c0-2 1-3 3-4"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><path d="M9 11a3 3 0 100-6 3 3 0 000 6zM3 20c0-3 3-5 6-5s6 2 6 5M17 11a3 3 0 100-6M21 20c0-2-1-4-3-4.5"/></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+<symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></symbol>
+<symbol id="i-out" viewBox="0 0 24 24"><path d="M10 4H5v16h5M15 8l4 4-4 4M19 12H9"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19C5 10 10 5 20 4c0 10-5 15-14 15zM5 19l8-8"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></symbol>
+<symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0112 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 004 0"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-left" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></symbol>
+<symbol id="i-right" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+</defs></svg>
+<div class="wrap">
+<header class="hero">
+<span class="kicker">Nutrelia UX &middot; Round 5 part A &middot; answers Q23a and the Remaining colours</span>
+<h1>Colour options for the menu and the whole UI</h1>
+<p class="lede">Santhosh asked for a neat, professional, very modern look; green is not mandatory, but if we keep green it should be lighter. Below are four palettes, each drawn as the same mini website: side menu, a Diary meal table with the three Remaining states, and two Add food rows. Each shows its full token list, calculated contrast, and pros and cons. The mock-ups follow your device's light or dark setting.</p>
+<p class="note"><b>Recommendation: Option B, Calm Teal.</b> It is calm and professional, keeps the table header unmistakable, has one accent colour, and leaves clear room between brand, status and macro colours. If Santhosh wants to keep green, choose Option A (Fresh Mint). Santhosh decides; nothing in the main screens file has changed yet.</p>
+</header>
+<section class="sec" aria-labelledby="h-ov"><h2 id="h-ov">At a glance</h2>
+<div class="grid"><div class="card"><div class="frame-t"><h3>A. Fresh Mint</h3></div><div class="sw" aria-hidden="true"><i style="background:#22c55e" title="#22c55e"></i><i style="background:#f0f8f3" title="#f0f8f3"></i><i style="background:#d6eddf" title="#d6eddf"></i><i style="background:#ecf7f0" title="#ecf7f0"></i><i style="background:#14703a" title="#14703a"></i><i style="background:#8a5a00" title="#8a5a00"></i><i style="background:#a8102a" title="#a8102a"></i></div><p class="cap">Light, airy and friendly: a white-mint menu with fresh green accents.</p><a href="#opt-a">See mock-up and numbers for A</a></div><div class="card"><div class="frame-t"><h3>B. Calm Teal</h3><span class="pill">Recommended</span></div><div class="sw" aria-hidden="true"><i style="background:#0f766e" title="#0f766e"></i><i style="background:#f1f5f9" title="#f1f5f9"></i><i style="background:#1e293b" title="#1e293b"></i><i style="background:#e4f2f1" title="#e4f2f1"></i><i style="background:#14703a" title="#14703a"></i><i style="background:#8a5a00" title="#8a5a00"></i><i style="background:#a8102a" title="#a8102a"></i></div><p class="cap">Quiet, clean and trustworthy: cool slate surfaces with one deep teal accent.</p><a href="#opt-b">See mock-up and numbers for B</a></div><div class="card"><div class="frame-t"><h3>C. Indigo Pop</h3></div><div class="sw" aria-hidden="true"><i style="background:#4f46e5" title="#4f46e5"></i><i style="background:#1e1b4b" title="#1e1b4b"></i><i style="background:#312e81" title="#312e81"></i><i style="background:#ececfc" title="#ececfc"></i><i style="background:#14703a" title="#14703a"></i><i style="background:#8a5a00" title="#8a5a00"></i><i style="background:#a8102a" title="#a8102a"></i></div><p class="cap">Confident modern SaaS: deep indigo menu, violet-blue actions, mint highlights.</p><a href="#opt-c">See mock-up and numbers for C</a></div><div class="card"><div class="frame-t"><h3>D. Graphite & Lime</h3></div><div class="sw" aria-hidden="true"><i style="background:#18181b" title="#18181b"></i><i style="background:#18181b" title="#18181b"></i><i style="background:#27272a" title="#27272a"></i><i style="background:#f1f5e4" title="#f1f5e4"></i><i style="background:#14703a" title="#14703a"></i><i style="background:#8a5a00" title="#8a5a00"></i><i style="background:#a8102a" title="#a8102a"></i></div><p class="cap">Sharp, sporty and editorial: graphite and white, with a single lime highlight.</p><a href="#opt-d">See mock-up and numbers for D</a></div></div>
+<p class="cap">Swatches left to right: brand, menu, table header, meal band, under goal, slightly over, well over (light mode).</p>
+<div class="scroller" tabindex="0" role="region" aria-label="Contrast summary, scrolls sideways on small screens"><table class="ptbl" style="min-width:560px"><caption class="sr">Contrast summary, light / dark</caption><thead><tr><th scope="col">Option</th><th scope="col">Menu text</th><th scope="col">Header text</th><th scope="col">Button text</th><th scope="col">Remaining status text (lowest)</th></tr></thead><tbody><tr><td>A</td><td class="num">11.54:1 / 14.82:1</td><td class="num">9.94:1 / 9.12:1</td><td class="num">6.54:1 / 8.55:1</td><td class="num">4.86:1 / 4.70:1</td></tr><tr><td>B</td><td class="num">13.35:1 / 14.48:1</td><td class="num">13.98:1 / 11.78:1</td><td class="num">5.47:1 / 7.77:1</td><td class="num">4.86:1 / 5.06:1</td></tr><tr><td>C</td><td class="num">14.30:1 / 15.89:1</td><td class="num">10.22:1 / 10.22:1</td><td class="num">6.29:1 / 5.36:1</td><td class="num">4.86:1 / 5.12:1</td></tr><tr><td>D</td><td class="num">16.97:1 / 19.06:1</td><td class="num">14.27:1 / 10.01:1</td><td class="num">17.72:1 / 16.97:1</td><td class="num">4.86:1 / 5.26:1</td></tr></tbody></table></div><p class="cap">Light / dark ratios. WCAG 2.2 AA needs 4.5:1 for text. All four options pass in both modes.</p>
+<div class="two">
+<div class="card"><h3>Rules that hold in every option</h3><ul>
+<li>Remaining always pairs colour with words: "742 left", "18 over", "20 over". Colour is never the only cue.</li>
+<li>Three steps: under goal, slightly over (up to 10% above), well over (more than 10% above).</li>
+<li>Macro colours (carbs, fat, protein, fiber) are at least 20 apart from each other (colour distance) and clearly different from the brand; the orange fat and the red "well over" are the closest pair to a status colour (about 10 apart), so the words always carry the meaning. Where a macro colour changed, the option says so.</li>
+<li>Text needs 4.5:1; borders, focus rings and bars need 3:1 (WCAG 2.2 AA). All figures below were calculated, not estimated.</li></ul></div>
+<div class="card"><h3>New tokens needed (any option)</h3><ul>
+<li><code>--brand-ink</code>: links, secondary buttons, focus ring (differs from <code>--brand</code> in A and C-dark).</li>
+<li><code>--field-border</code>: input and outline-button border at 3:1 (the old <code>--border</code> is only 1.5:1).</li>
+<li><code>--nav-bar</code>, <code>--nav-cta-bg</code>, <code>--nav-cta-text</code>, <code>--nav-border</code>: replace the green gradient and the on-dark button.</li>
+<li><code>--th-line</code>, <code>--logo-a</code>, <code>--logo-b</code>, <code>--logo-ink</code>.</li>
+<li>Status colours are re-tuned (darker) in all options.</li></ul></div></div>
+</section>
+<section class="sec" id="opt-a" aria-labelledby="h-a">
+<div class="frame-t"><h2 id="h-a">A. Fresh Mint <span class="cap" style="font-weight:400">(light green)</span></h2><span class="pill neutral">Fallback if green must stay</span></div>
+<p class="lede"><b>Mood:</b> Light, airy and friendly: a white-mint menu with fresh green accents.</p>
+
+<div class="scroller" tabindex="0" role="region" aria-label="Option A mock-up, scrolls sideways on small screens">
+<div class="mock pal-a" role="group" aria-label="Option A mock-up of the Diary and Add food screens (static)">
+<nav class="side" aria-label="Main menu (static mock-up)">
+<span class="logo"><span class="mark"><svg class="i" aria-hidden="true"><use href="#i-leaf"/></svg></span>Nutrelia</span>
+<span class="cta"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg>Add food</span>
+<div role="group" aria-label="Track"><span class="sep" aria-hidden="true">Track</span><ul>
+<li class="ni"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg>Home</li><li class="ni on" aria-current="page"><svg class="i" aria-hidden="true"><use href="#i-book"/></svg>Diary</li><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-flame"/></svg>Activity</li><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg>Progress</li></ul></div>
+<div role="group" aria-label="Foods"><span class="sep" aria-hidden="true">Foods</span><ul><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-apple"/></svg>My Foods</li></ul></div>
+<div role="group" aria-label="Social"><span class="sep" aria-hidden="true">Social</span><ul><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg>Friends</li></ul></div>
+<div class="ucard" role="group" aria-label="Account"><div class="who"><span class="av" aria-hidden="true">PS</span><span class="t"><b>Priya S.</b><small>Signed in</small></span></div><div class="ulinks"><span><svg class="i" aria-hidden="true"><use href="#i-gear"/></svg>Settings</span><span><svg class="i" aria-hidden="true"><use href="#i-out"/></svg>Log out</span></div></div>
+</nav>
+<div class="col"><div class="main">
+<div class="head"><div><h3 class="h1">Diary</h3><span class="muted">Wednesday, 18 November 2026</span></div><span class="tools"><span class="btn btn-g btn-round" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-left"/></svg></span><span class="btn btn-s">Today</span><span class="btn btn-g btn-round" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-right"/></svg></span><span class="btn btn-p"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg>Add food</span></span></div>
+<div class="card"><table class="tbl"><colgroup><col><col style="width:92px"><col style="width:108px"><col style="width:92px"><col style="width:116px"><col style="width:100px"></colgroup><caption class="sr">Lunch: foods and nutrients</caption>
+<thead><tr class="mealband"><th scope="colgroup">Lunch</th><th scope="colgroup" colspan="5" class="n">612 kcal</th></tr><tr><th scope="col">Food</th><th scope="col" class="n">Calories</th><th scope="col" class="n m carbs">Carbs (g)</th><th scope="col" class="n m fat">Fat (g)</th><th scope="col" class="n m protein">Protein (g)</th><th scope="col" class="n m fiber">Fiber (g)</th></tr></thead>
+<tbody><tr><td><span class="fcell"><span>Chapathi<span class="muted"> &ndash; 2 medium</span></span></span></td><td class="n">208</td><td class="n">36</td><td class="n">4</td><td class="n">6</td><td class="n">4</td></tr><tr><td><span class="fcell"><span>Dal Tadka<span class="muted"> &ndash; 1 cup</span></span></span></td><td class="n">198</td><td class="n">30</td><td class="n">4</td><td class="n">11</td><td class="n">5</td></tr><tr><td><span class="fcell"><span>Rice, white, cooked<span class="muted"> &ndash; 1 cup</span></span></span></td><td class="n">206</td><td class="n">45</td><td class="n">0</td><td class="n">4</td><td class="n">1</td></tr></tbody>
+<tfoot><tr class="tot"><td>Lunch total</td><td class="n">612</td><td class="n">111</td><td class="n">8</td><td class="n">21</td><td class="n">10</td></tr><tr class="rem"><td>Remaining today</td><td class="n s-ok">742 left</td><td class="n s-warn">18 over</td><td class="n s-bad">20 over</td><td class="n s-ok">34 left</td><td class="n s-ok">12 left</td></tr></tfoot></table></div>
+<div class="legend" role="list" aria-label="What the Remaining colours mean"><span role="listitem"><span class="badge ok">742 left</span> Under goal</span><span role="listitem"><span class="badge warn">18 over</span> Slightly over (up to 10% above goal)</span><span role="listitem"><span class="badge bad">20 over</span> Well over (more than 10% above goal)</span></div>
+<h3 class="h2">Add food to Lunch</h3>
+<div class="tools"><label class="field" style="flex:1"><span class="sr">Search foods</span><svg class="i" aria-hidden="true"><use href="#i-search"/></svg><input placeholder="Search foods or type what you ate"></label><span class="btn btn-s">Select several</span></div>
+<p class="small muted">The list updates as you type.</p>
+<ul class="fl" aria-label="Sample food rows"><li class="fr"><div class="fr-1"><span class="fr-name">Chapathi (whole wheat)</span><span class="badge ok"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Verified</span></div>
+<div class="fr-2">Nutrelia &middot; 1 medium (40 g) &middot; 104 kcal</div>
+<div class="fr-3"><span class="fr-n" aria-label="Nutrition for 1 serving"><span class="kc"><b class="num">104</b> kcal</span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn carbs"><i class="dot"></i>Carbs <b class="num">18 g</b></span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn fat"><i class="dot"></i>Fat <b class="num">2 g</b></span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn protein"><i class="dot"></i>Protein <b class="num">3 g</b></span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn fiber"><i class="dot"></i>Fiber <b class="num">2 g</b></span></span>
+<span class="fr-amt"><label for="a-sv1">Servings</label><input id="a-sv1" class="cmp num" inputmode="decimal" value="1"><label for="a-sz1">Serving size</label><select id="a-sz1" class="cmp"><option>1 medium (40 g)</option></select></span></div>
+<button type="button" class="btn btn-s btn-round fr-add" aria-label="Add Chapathi (whole wheat) to Lunch" title="Add Chapathi (whole wheat) to Lunch"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></button></li><li class="fr hov"><div class="fr-1"><span class="fr-name">Dal Tadka</span><span class="badge ok"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Verified</span></div>
+<div class="fr-2">Nutrelia &middot; 1 cup (200 g) &middot; 198 kcal</div>
+<div class="fr-3"><span class="fr-n" aria-label="Nutrition for 2 servings"><span class="kc"><b class="num">396</b> kcal</span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn carbs"><i class="dot"></i>Carbs <b class="num">60 g</b></span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn fat"><i class="dot"></i>Fat <b class="num">8 g</b></span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn protein"><i class="dot"></i>Protein <b class="num">22 g</b></span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn fiber"><i class="dot"></i>Fiber <b class="num">10 g</b></span></span>
+<span class="fr-amt"><label for="a-sv2">Servings</label><input id="a-sv2" class="cmp num" inputmode="decimal" value="2"><label for="a-sz2">Serving size</label><select id="a-sz2" class="cmp"><option>1 cup (200 g)</option></select></span></div>
+<button type="button" class="btn btn-s btn-round fr-add" aria-label="Add Dal Tadka to Lunch" title="Add Dal Tadka to Lunch"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></button></li></ul>
+</div></div></div></div>
+<p class="cap">The mock follows your device's light or dark setting. Shows: side menu, meal table with all three Remaining states, and two Add food rows with + button, Servings and Serving size.</p>
+<div class="two">
+<div class="card pc"><h3>Pros</h3><ul><li>Closest to what Santhosh already knows: green stays, so the name and the product feel connected.</li><li>Light, airy and friendly; the page content stands out because the menu no longer is a heavy dark block.</li><li>Fresh bright-green button with deep-green text (6.5:1 contrast) feels lighter than today.</li></ul></div>
+<div class="card pc"><h3>Cons</h3><ul><li>The light menu is separated from the page only by a thin line and a tint, so the structure is softer.</li><li>Brand green and "under goal" green are close, so "primary" and "good" can blur; the words ("742 left") carry the meaning.</li><li>Most conventional look for a nutrition app; least distinctive.</li><li>Bright green button needs dark text instead of white (unusual, but passes AA).</li></ul></div></div>
+<div class="card"><h3>Macro colours</h3><p>Carbs (blue #2563eb) and fat (orange #c2410c) are unchanged. <b>Protein changes</b> from violet #7c3aed to deep indigo-violet #3b1a85 (dark mode #8160f6) and <b>fiber changes</b> from teal #0f766e to magenta #c026d3 (dark #f472d0), so blue, violet and pink are far enough apart at dot size and fiber is not a second green or teal.</p>
+<p class="cap">Separation measured as perceptual colour distance (OKLab, x100; 20 or more is clearly different at dot size; every macro pair meets it). Light mode: closest macro pair 22.7 (carbs / protein); closest macro to a status colour 10.1 (fat / error); closest macro to the brand 26.0 (fat / brandInk); the three status colours are 14.6 or more apart; brand to success green 3.4. Dark mode: 22.0 / 10.6 / 21.7 / 18.7. Macros always carry a written label, and macro colours are used only for dots, bars and header underlines (3:1 is required for those), never as text colour, so colour is never the only cue.</p></div>
+<div class="card"><h3>Remaining status colours (words always shown)</h3>
+<ul><li><span class="chip" style="background:#14703a"></span><b>Under goal</b> <code>--success</code> #14703a: shows "742 left".</li>
+<li><span class="chip" style="background:#8a5a00"></span><b>Slightly over (up to 10%)</b> <code>--warning</code> #8a5a00: shows "18 over".</li>
+<li><span class="chip" style="background:#a8102a"></span><b>Well over (more than 10%)</b> <code>--error</code> #a8102a: shows "20 over".</li></ul>
+<p class="cap">Chosen for this palette: darker than Round 4 so they pass 4.5:1 even on tinted badges and the Remaining row, and the red is a deeper crimson so it never reads as the orange fat macro.</p></div>
+<h3>Full token list</h3><div class="scroller" tabindex="0" role="region" aria-label="Option A token list, scrolls sideways on small screens"><table class="ptbl"><caption class="sr">Option A tokens</caption><thead><tr><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th><th scope="col">Used for</th></tr></thead><tbody>
+<tr><td><code>--bg</code></td><td class="num"><span class="chip" style="background:#f5faf7"></span>#f5faf7</td><td class="num"><span class="chip" style="background:#0c1a13"></span>#0c1a13</td><td>Page background</td></tr>
+<tr><td><code>--surface</code></td><td class="num"><span class="chip" style="background:#ffffff"></span>#ffffff</td><td class="num"><span class="chip" style="background:#14261c"></span>#14261c</td><td>Cards, table body, inputs</td></tr>
+<tr><td><code>--surface2</code></td><td class="num"><span class="chip" style="background:#edf5f0"></span>#edf5f0</td><td class="num"><span class="chip" style="background:#1c3327"></span>#1c3327</td><td>Hover fill, tracks, chips</td></tr>
+<tr><td><code>--border</code></td><td class="num"><span class="chip" style="background:#d3e0d8"></span>#d3e0d8</td><td class="num"><span class="chip" style="background:#2f4a3a"></span>#2f4a3a</td><td>Dividers, card edges</td></tr>
+<tr><td><code>--field-border</code></td><td class="num"><span class="chip" style="background:#738a7b"></span>#738a7b</td><td class="num"><span class="chip" style="background:#7fa28d"></span>#7fa28d</td><td>Input and outline-button border (3:1)</td></tr>
+<tr><td><code>--text</code></td><td class="num"><span class="chip" style="background:#13261c"></span>#13261c</td><td class="num"><span class="chip" style="background:#eef7f1"></span>#eef7f1</td><td>Body text</td></tr>
+<tr><td><code>--text2</code></td><td class="num"><span class="chip" style="background:#465c4f"></span>#465c4f</td><td class="num"><span class="chip" style="background:#b4c9bb"></span>#b4c9bb</td><td>Secondary text</td></tr>
+<tr><td><code>--brand</code></td><td class="num"><span class="chip" style="background:#22c55e"></span>#22c55e</td><td class="num"><span class="chip" style="background:#4ade80"></span>#4ade80</td><td>Primary button fill (brand)</td></tr>
+<tr><td><code>--brand-hover</code></td><td class="num"><span class="chip" style="background:#16a34a"></span>#16a34a</td><td class="num"><span class="chip" style="background:#86efac"></span>#86efac</td><td>Primary button hover</td></tr>
+<tr><td><code>--on-brand</code></td><td class="num"><span class="chip" style="background:#052e16"></span>#052e16</td><td class="num"><span class="chip" style="background:#052e16"></span>#052e16</td><td>Text on the primary button (on-brand)</td></tr>
+<tr><td><code>--brand-ink</code></td><td class="num"><span class="chip" style="background:#166534"></span>#166534</td><td class="num"><span class="chip" style="background:#4ade80"></span>#4ade80</td><td>Links, secondary button text, focus ring</td></tr>
+<tr><td><code>--nav-bg</code></td><td class="num"><span class="chip" style="background:#f0f8f3"></span>#f0f8f3</td><td class="num"><span class="chip" style="background:#0f2218"></span>#0f2218</td><td>Side menu background (nav bg)</td></tr>
+<tr><td><code>--nav-text</code></td><td class="num"><span class="chip" style="background:#1b3a29"></span>#1b3a29</td><td class="num"><span class="chip" style="background:#e8f5ec"></span>#e8f5ec</td><td>Menu item text (nav text)</td></tr>
+<tr><td><code>--nav-muted</code></td><td class="num"><span class="chip" style="background:#4f6b5b"></span>#4f6b5b</td><td class="num"><span class="chip" style="background:#9cc2aa"></span>#9cc2aa</td><td>Menu group labels, user subtitle</td></tr>
+<tr><td><code>--nav-active-bg</code></td><td class="num"><span class="chip" style="background:#d5f0df"></span>#d5f0df</td><td class="num"><span class="chip" style="background:#1f4a32"></span>#1f4a32</td><td>Active menu item fill (nav active)</td></tr>
+<tr><td><code>--nav-active-text</code></td><td class="num"><span class="chip" style="background:#0d4d2a"></span>#0d4d2a</td><td class="num"><span class="chip" style="background:#dcfce7"></span>#dcfce7</td><td>Active menu item text</td></tr>
+<tr><td><code>--nav-bar</code></td><td class="num"><span class="chip" style="background:#16a34a"></span>#16a34a</td><td class="num"><span class="chip" style="background:#4ade80"></span>#4ade80</td><td>Active item edge bar, meal-band bar</td></tr>
+<tr><td><code>--nav-cta-bg</code></td><td class="num"><span class="chip" style="background:#22c55e"></span>#22c55e</td><td class="num"><span class="chip" style="background:#4ade80"></span>#4ade80</td><td>Menu "Add food" button fill</td></tr>
+<tr><td><code>--nav-cta-text</code></td><td class="num"><span class="chip" style="background:#052e16"></span>#052e16</td><td class="num"><span class="chip" style="background:#052e16"></span>#052e16</td><td>Menu "Add food" button text</td></tr>
+<tr><td><code>--nav-border</code></td><td class="num"><span class="chip" style="background:#d3e0d8"></span>#d3e0d8</td><td class="num"><span class="chip" style="background:#2f4a3a"></span>#2f4a3a</td><td>Menu edge line</td></tr>
+<tr><td><code>--th-bg</code></td><td class="num"><span class="chip" style="background:#d6eddf"></span>#d6eddf</td><td class="num"><span class="chip" style="background:#1f4a35"></span>#1f4a35</td><td>Table header band (header bg)</td></tr>
+<tr><td><code>--th-text</code></td><td class="num"><span class="chip" style="background:#0f3d25"></span>#0f3d25</td><td class="num"><span class="chip" style="background:#eaf7ef"></span>#eaf7ef</td><td>Table header text (header text)</td></tr>
+<tr><td><code>--th-line</code></td><td class="num"><span class="chip" style="background:#16a34a"></span>#16a34a</td><td class="num"><span class="chip" style="background:#4ade80"></span>#4ade80</td><td>Line under the table header</td></tr>
+<tr><td><code>--band-bg</code></td><td class="num"><span class="chip" style="background:#ecf7f0"></span>#ecf7f0</td><td class="num"><span class="chip" style="background:#17301f"></span>#17301f</td><td>Meal band tint (band)</td></tr>
+<tr><td><code>--zebra</code></td><td class="num"><span class="chip" style="background:rgba(19,38,28,0.04)"></span>rgba(19,38,28,0.04)</td><td class="num"><span class="chip" style="background:rgba(255,255,255,0.04)"></span>rgba(255,255,255,0.04)</td><td>Zebra row tint</td></tr>
+<tr><td><code>--foot</code></td><td class="num"><span class="chip" style="background:#e6f2eb"></span>#e6f2eb</td><td class="num"><span class="chip" style="background:#1c3327"></span>#1c3327</td><td>Total and Remaining row fill</td></tr>
+<tr><td><code>--row-hover</code></td><td class="num"><span class="chip" style="background:rgba(22,163,74,0.08)"></span>rgba(22,163,74,0.08)</td><td class="num"><span class="chip" style="background:rgba(74,222,128,0.10)"></span>rgba(74,222,128,0.10)</td><td>Row hover tint</td></tr>
+<tr><td><code>--success</code></td><td class="num"><span class="chip" style="background:#14703a"></span>#14703a</td><td class="num"><span class="chip" style="background:#4ade80"></span>#4ade80</td><td>Remaining: under goal ("742 left")</td></tr>
+<tr><td><code>--warning</code></td><td class="num"><span class="chip" style="background:#8a5a00"></span>#8a5a00</td><td class="num"><span class="chip" style="background:#facc15"></span>#facc15</td><td>Remaining: slightly over, up to 10% ("18 over")</td></tr>
+<tr><td><code>--error</code></td><td class="num"><span class="chip" style="background:#a8102a"></span>#a8102a</td><td class="num"><span class="chip" style="background:#f87171"></span>#f87171</td><td>Remaining: well over, more than 10% ("20 over")</td></tr>
+<tr><td><code>--carbs</code></td><td class="num"><span class="chip" style="background:#2563eb"></span>#2563eb</td><td class="num"><span class="chip" style="background:#8ec5fc"></span>#8ec5fc</td><td>Carbs macro</td></tr>
+<tr><td><code>--fat</code></td><td class="num"><span class="chip" style="background:#c2410c"></span>#c2410c</td><td class="num"><span class="chip" style="background:#fb923c"></span>#fb923c</td><td>Fat macro</td></tr>
+<tr><td><code>--protein</code></td><td class="num"><span class="chip" style="background:#3b1a85"></span>#3b1a85</td><td class="num"><span class="chip" style="background:#8160f6"></span>#8160f6</td><td>Protein macro (changed from #7c3aed)</td></tr>
+<tr><td><code>--fiber</code></td><td class="num"><span class="chip" style="background:#c026d3"></span>#c026d3</td><td class="num"><span class="chip" style="background:#f472d0"></span>#f472d0</td><td>Fiber macro (changed from #0f766e)</td></tr>
+<tr><td><code>--logo-a</code></td><td class="num"><span class="chip" style="background:#4ade80"></span>#4ade80</td><td class="num"><span class="chip" style="background:#86efac"></span>#86efac</td><td>Logo mark gradient start</td></tr>
+<tr><td><code>--logo-b</code></td><td class="num"><span class="chip" style="background:#16a34a"></span>#16a34a</td><td class="num"><span class="chip" style="background:#22c55e"></span>#22c55e</td><td>Logo mark gradient end</td></tr>
+<tr><td><code>--logo-ink</code></td><td class="num"><span class="chip" style="background:#052e16"></span>#052e16</td><td class="num"><span class="chip" style="background:#052e16"></span>#052e16</td><td>Logo glyph</td></tr>
+</tbody></table></div>
+<h3>WCAG 2.2 AA contrast (calculated)</h3><div class="scroller" tabindex="0" role="region" aria-label="Option A contrast results, scrolls sideways on small screens"><table class="ptbl"><caption class="sr">Option A WCAG 2.2 AA contrast results (lowest value across the listed backgrounds)</caption><thead><tr><th scope="col">Check</th><th scope="col">Colours (lowest of the backgrounds)</th><th scope="col">Light</th><th scope="col">Dark</th><th scope="col">Needed (AA)</th></tr></thead><tbody><tr><td>Menu item text</td><td>navText on menu</td><td class="num">11.54:1 <span class="ok">Pass</span></td><td class="num">14.82:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Menu group label (TRACK, FOODS)</td><td>navMuted on menu</td><td class="num">5.42:1 <span class="ok">Pass</span></td><td class="num">8.49:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Menu active item text</td><td>navActiveText on active pill</td><td class="num">8.22:1 <span class="ok">Pass</span></td><td class="num">9.18:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Menu "Add food" button text</td><td>navCtaText on button</td><td class="num">6.54:1 <span class="ok">Pass</span></td><td class="num">8.55:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Menu active edge bar (non-text)</td><td>navBar on menu</td><td class="num">3.05:1 <span class="ok">Pass</span></td><td class="num">9.55:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Table header text</td><td>thText on header</td><td class="num">9.94:1 <span class="ok">Pass</span></td><td class="num">9.12:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Meal band text</td><td>text on band</td><td class="num">14.47:1 <span class="ok">Pass</span></td><td class="num">12.99:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Primary button text</td><td>onBrand on brand</td><td class="num">6.54:1 <span class="ok">Pass</span></td><td class="num">8.55:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Primary button text, hover</td><td>onBrand on hover</td><td class="num">4.52:1 <span class="ok">Pass</span></td><td class="num">10.62:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Link / secondary button text</td><td>brandInk on white / zebra row</td><td class="num">6.60:1 <span class="ok">Pass</span></td><td class="num">8.11:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Body text</td><td>text on white / zebra row / page</td><td class="num">14.70:1 <span class="ok">Pass</span></td><td class="num">12.93:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Secondary text</td><td>text2 on white / zebra row / page</td><td class="num">6.69:1 <span class="ok">Pass</span></td><td class="num">8.09:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Remaining: "742 left" (under)</td><td>success on white / Remaining row / badge tint</td><td class="num">5.02:1 <span class="ok">Pass</span></td><td class="num">6.64:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Remaining: "18 over" (slightly over)</td><td>warning on white / Remaining row / badge tint</td><td class="num">4.86:1 <span class="ok">Pass</span></td><td class="num">7.50:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Remaining: "20 over" (well over)</td><td>error on white / Remaining row / badge tint</td><td class="num">5.90:1 <span class="ok">Pass</span></td><td class="num">4.70:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Input and outline border (non-text)</td><td>fieldBorder on white</td><td class="num">3.72:1 <span class="ok">Pass</span></td><td class="num">5.63:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Focus ring (brand-ink, non-text)</td><td>brandInk on white</td><td class="num">7.13:1 <span class="ok">Pass</span></td><td class="num">9.10:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Carbs colour (dot, bar, underline; non-text)</td><td>carbs on white / zebra row</td><td class="num">4.78:1 <span class="ok">Pass</span></td><td class="num">7.77:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Fat colour (dot, bar, underline; non-text)</td><td>fat on white / zebra row</td><td class="num">4.79:1 <span class="ok">Pass</span></td><td class="num">6.25:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Protein colour (dot, bar, underline; non-text)</td><td>protein on white / zebra row</td><td class="num">11.62:1 <span class="ok">Pass</span></td><td class="num">3.32:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Fiber colour (dot, bar, underline; non-text)</td><td>fiber on white / zebra row</td><td class="num">4.36:1 <span class="ok">Pass</span></td><td class="num">5.50:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Logo glyph on logo mark (non-text)</td><td>logoInk on logo / logo</td><td class="num">4.52:1 <span class="ok">Pass</span></td><td class="num">6.54:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr></tbody></table></div>
+<p class="cap">Lowest ratio in this option: 3.05:1 light, 3.32:1 dark (those lowest values are non-text items that need 3:1). Every text pair needs 4.5:1.</p>
+</section>
+<section class="sec" id="opt-b" aria-labelledby="h-b">
+<div class="frame-t"><h2 id="h-b">B. Calm Teal <span class="cap" style="font-weight:400">(slate neutrals + deep teal)</span></h2><span class="pill">Recommended</span></div>
+<p class="lede"><b>Mood:</b> Quiet, clean and trustworthy: cool slate surfaces with one deep teal accent.</p>
+
+<div class="scroller" tabindex="0" role="region" aria-label="Option B mock-up, scrolls sideways on small screens">
+<div class="mock pal-b" role="group" aria-label="Option B mock-up of the Diary and Add food screens (static)">
+<nav class="side" aria-label="Main menu (static mock-up)">
+<span class="logo"><span class="mark"><svg class="i" aria-hidden="true"><use href="#i-leaf"/></svg></span>Nutrelia</span>
+<span class="cta"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg>Add food</span>
+<div role="group" aria-label="Track"><span class="sep" aria-hidden="true">Track</span><ul>
+<li class="ni"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg>Home</li><li class="ni on" aria-current="page"><svg class="i" aria-hidden="true"><use href="#i-book"/></svg>Diary</li><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-flame"/></svg>Activity</li><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg>Progress</li></ul></div>
+<div role="group" aria-label="Foods"><span class="sep" aria-hidden="true">Foods</span><ul><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-apple"/></svg>My Foods</li></ul></div>
+<div role="group" aria-label="Social"><span class="sep" aria-hidden="true">Social</span><ul><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg>Friends</li></ul></div>
+<div class="ucard" role="group" aria-label="Account"><div class="who"><span class="av" aria-hidden="true">PS</span><span class="t"><b>Priya S.</b><small>Signed in</small></span></div><div class="ulinks"><span><svg class="i" aria-hidden="true"><use href="#i-gear"/></svg>Settings</span><span><svg class="i" aria-hidden="true"><use href="#i-out"/></svg>Log out</span></div></div>
+</nav>
+<div class="col"><div class="main">
+<div class="head"><div><h3 class="h1">Diary</h3><span class="muted">Wednesday, 18 November 2026</span></div><span class="tools"><span class="btn btn-g btn-round" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-left"/></svg></span><span class="btn btn-s">Today</span><span class="btn btn-g btn-round" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-right"/></svg></span><span class="btn btn-p"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg>Add food</span></span></div>
+<div class="card"><table class="tbl"><colgroup><col><col style="width:92px"><col style="width:108px"><col style="width:92px"><col style="width:116px"><col style="width:100px"></colgroup><caption class="sr">Lunch: foods and nutrients</caption>
+<thead><tr class="mealband"><th scope="colgroup">Lunch</th><th scope="colgroup" colspan="5" class="n">612 kcal</th></tr><tr><th scope="col">Food</th><th scope="col" class="n">Calories</th><th scope="col" class="n m carbs">Carbs (g)</th><th scope="col" class="n m fat">Fat (g)</th><th scope="col" class="n m protein">Protein (g)</th><th scope="col" class="n m fiber">Fiber (g)</th></tr></thead>
+<tbody><tr><td><span class="fcell"><span>Chapathi<span class="muted"> &ndash; 2 medium</span></span></span></td><td class="n">208</td><td class="n">36</td><td class="n">4</td><td class="n">6</td><td class="n">4</td></tr><tr><td><span class="fcell"><span>Dal Tadka<span class="muted"> &ndash; 1 cup</span></span></span></td><td class="n">198</td><td class="n">30</td><td class="n">4</td><td class="n">11</td><td class="n">5</td></tr><tr><td><span class="fcell"><span>Rice, white, cooked<span class="muted"> &ndash; 1 cup</span></span></span></td><td class="n">206</td><td class="n">45</td><td class="n">0</td><td class="n">4</td><td class="n">1</td></tr></tbody>
+<tfoot><tr class="tot"><td>Lunch total</td><td class="n">612</td><td class="n">111</td><td class="n">8</td><td class="n">21</td><td class="n">10</td></tr><tr class="rem"><td>Remaining today</td><td class="n s-ok">742 left</td><td class="n s-warn">18 over</td><td class="n s-bad">20 over</td><td class="n s-ok">34 left</td><td class="n s-ok">12 left</td></tr></tfoot></table></div>
+<div class="legend" role="list" aria-label="What the Remaining colours mean"><span role="listitem"><span class="badge ok">742 left</span> Under goal</span><span role="listitem"><span class="badge warn">18 over</span> Slightly over (up to 10% above goal)</span><span role="listitem"><span class="badge bad">20 over</span> Well over (more than 10% above goal)</span></div>
+<h3 class="h2">Add food to Lunch</h3>
+<div class="tools"><label class="field" style="flex:1"><span class="sr">Search foods</span><svg class="i" aria-hidden="true"><use href="#i-search"/></svg><input placeholder="Search foods or type what you ate"></label><span class="btn btn-s">Select several</span></div>
+<p class="small muted">The list updates as you type.</p>
+<ul class="fl" aria-label="Sample food rows"><li class="fr"><div class="fr-1"><span class="fr-name">Chapathi (whole wheat)</span><span class="badge ok"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Verified</span></div>
+<div class="fr-2">Nutrelia &middot; 1 medium (40 g) &middot; 104 kcal</div>
+<div class="fr-3"><span class="fr-n" aria-label="Nutrition for 1 serving"><span class="kc"><b class="num">104</b> kcal</span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn carbs"><i class="dot"></i>Carbs <b class="num">18 g</b></span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn fat"><i class="dot"></i>Fat <b class="num">2 g</b></span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn protein"><i class="dot"></i>Protein <b class="num">3 g</b></span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn fiber"><i class="dot"></i>Fiber <b class="num">2 g</b></span></span>
+<span class="fr-amt"><label for="b-sv1">Servings</label><input id="b-sv1" class="cmp num" inputmode="decimal" value="1"><label for="b-sz1">Serving size</label><select id="b-sz1" class="cmp"><option>1 medium (40 g)</option></select></span></div>
+<button type="button" class="btn btn-s btn-round fr-add" aria-label="Add Chapathi (whole wheat) to Lunch" title="Add Chapathi (whole wheat) to Lunch"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></button></li><li class="fr hov"><div class="fr-1"><span class="fr-name">Dal Tadka</span><span class="badge ok"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Verified</span></div>
+<div class="fr-2">Nutrelia &middot; 1 cup (200 g) &middot; 198 kcal</div>
+<div class="fr-3"><span class="fr-n" aria-label="Nutrition for 2 servings"><span class="kc"><b class="num">396</b> kcal</span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn carbs"><i class="dot"></i>Carbs <b class="num">60 g</b></span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn fat"><i class="dot"></i>Fat <b class="num">8 g</b></span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn protein"><i class="dot"></i>Protein <b class="num">22 g</b></span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn fiber"><i class="dot"></i>Fiber <b class="num">10 g</b></span></span>
+<span class="fr-amt"><label for="b-sv2">Servings</label><input id="b-sv2" class="cmp num" inputmode="decimal" value="2"><label for="b-sz2">Serving size</label><select id="b-sz2" class="cmp"><option>1 cup (200 g)</option></select></span></div>
+<button type="button" class="btn btn-s btn-round fr-add" aria-label="Add Dal Tadka to Lunch" title="Add Dal Tadka to Lunch"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></button></li></ul>
+</div></div></div></div>
+<p class="cap">The mock follows your device's light or dark setting. Shows: side menu, meal table with all three Remaining states, and two Add food rows with + button, Servings and Serving size.</p>
+<div class="two">
+<div class="card pc"><h3>Pros</h3><ul><li>Calm, clean, clinical-but-friendly: reads as professional health-tech without being green.</li><li>Slate header band stays crisp and unmistakable (the Round 4 goal), with the table clearly the hero.</li><li>Teal is clearly separate from the green, amber and red status colours and from every macro (after the fiber change).</li><li>White text on the teal button is 5.5:1; the same teal is used for links and focus, so there is only one accent to maintain.</li><li>Light menu keeps the whole screen light and spacious; dark mode is a natural fit.</li></ul></div>
+<div class="card pc"><h3>Cons</h3><ul><li>Teal and the success green are neighbours on the colour wheel; they stay distinct only because of words and the strong status hues.</li><li>Less "wow" than a dark or indigo menu.</li><li>Protein becomes a very dark indigo-violet and fiber becomes magenta, both different from the Round 4 macro colours.</li></ul></div></div>
+<div class="card"><h3>Macro colours</h3><p>Carbs (blue #2563eb) and fat (orange #c2410c) are unchanged. <b>Protein changes</b> from violet #7c3aed to deep indigo-violet #3b1a85 (dark mode #8160f6) and <b>fiber changes</b> from teal #0f766e to magenta #c026d3 (dark #f472d0). Teal is now the brand, so fiber cannot be teal, and magenta is clearly apart from the deep violet protein, the blue carbs, the orange fat, the teal brand and the three status colours.</p>
+<p class="cap">Separation measured as perceptual colour distance (OKLab, x100; 20 or more is clearly different at dot size; every macro pair meets it). Light mode: closest macro pair 22.7 (carbs / protein); closest macro to a status colour 10.1 (fat / error); closest macro to the brand 21.5 (carbs / brand); the three status colours are 14.6 or more apart; brand to success green 7.5. Dark mode: 22.0 / 10.6 / 13.2 / 19.6. Macros always carry a written label, and macro colours are used only for dots, bars and header underlines (3:1 is required for those), never as text colour, so colour is never the only cue.</p></div>
+<div class="card"><h3>Remaining status colours (words always shown)</h3>
+<ul><li><span class="chip" style="background:#14703a"></span><b>Under goal</b> <code>--success</code> #14703a: shows "742 left".</li>
+<li><span class="chip" style="background:#8a5a00"></span><b>Slightly over (up to 10%)</b> <code>--warning</code> #8a5a00: shows "18 over".</li>
+<li><span class="chip" style="background:#a8102a"></span><b>Well over (more than 10%)</b> <code>--error</code> #a8102a: shows "20 over".</li></ul>
+<p class="cap">Chosen for this palette: darker than Round 4 so they pass 4.5:1 even on tinted badges and the Remaining row, and the red is a deeper crimson so it never reads as the orange fat macro.</p></div>
+<h3>Full token list</h3><div class="scroller" tabindex="0" role="region" aria-label="Option B token list, scrolls sideways on small screens"><table class="ptbl"><caption class="sr">Option B tokens</caption><thead><tr><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th><th scope="col">Used for</th></tr></thead><tbody>
+<tr><td><code>--bg</code></td><td class="num"><span class="chip" style="background:#f6f8fb"></span>#f6f8fb</td><td class="num"><span class="chip" style="background:#0b1220"></span>#0b1220</td><td>Page background</td></tr>
+<tr><td><code>--surface</code></td><td class="num"><span class="chip" style="background:#ffffff"></span>#ffffff</td><td class="num"><span class="chip" style="background:#131c2e"></span>#131c2e</td><td>Cards, table body, inputs</td></tr>
+<tr><td><code>--surface2</code></td><td class="num"><span class="chip" style="background:#eef2f6"></span>#eef2f6</td><td class="num"><span class="chip" style="background:#1b2740"></span>#1b2740</td><td>Hover fill, tracks, chips</td></tr>
+<tr><td><code>--border</code></td><td class="num"><span class="chip" style="background:#d7dee7"></span>#d7dee7</td><td class="num"><span class="chip" style="background:#2d3b55"></span>#2d3b55</td><td>Dividers, card edges</td></tr>
+<tr><td><code>--field-border</code></td><td class="num"><span class="chip" style="background:#64748b"></span>#64748b</td><td class="num"><span class="chip" style="background:#7d8ca5"></span>#7d8ca5</td><td>Input and outline-button border (3:1)</td></tr>
+<tr><td><code>--text</code></td><td class="num"><span class="chip" style="background:#0f172a"></span>#0f172a</td><td class="num"><span class="chip" style="background:#f1f5f9"></span>#f1f5f9</td><td>Body text</td></tr>
+<tr><td><code>--text2</code></td><td class="num"><span class="chip" style="background:#475569"></span>#475569</td><td class="num"><span class="chip" style="background:#b6c2d4"></span>#b6c2d4</td><td>Secondary text</td></tr>
+<tr><td><code>--brand</code></td><td class="num"><span class="chip" style="background:#0f766e"></span>#0f766e</td><td class="num"><span class="chip" style="background:#2dd4bf"></span>#2dd4bf</td><td>Primary button fill (brand)</td></tr>
+<tr><td><code>--brand-hover</code></td><td class="num"><span class="chip" style="background:#115e59"></span>#115e59</td><td class="num"><span class="chip" style="background:#5eead4"></span>#5eead4</td><td>Primary button hover</td></tr>
+<tr><td><code>--on-brand</code></td><td class="num"><span class="chip" style="background:#ffffff"></span>#ffffff</td><td class="num"><span class="chip" style="background:#042f2e"></span>#042f2e</td><td>Text on the primary button (on-brand)</td></tr>
+<tr><td><code>--brand-ink</code></td><td class="num"><span class="chip" style="background:#0f766e"></span>#0f766e</td><td class="num"><span class="chip" style="background:#2dd4bf"></span>#2dd4bf</td><td>Links, secondary button text, focus ring</td></tr>
+<tr><td><code>--nav-bg</code></td><td class="num"><span class="chip" style="background:#f1f5f9"></span>#f1f5f9</td><td class="num"><span class="chip" style="background:#0f172a"></span>#0f172a</td><td>Side menu background (nav bg)</td></tr>
+<tr><td><code>--nav-text</code></td><td class="num"><span class="chip" style="background:#1e293b"></span>#1e293b</td><td class="num"><span class="chip" style="background:#e2e8f0"></span>#e2e8f0</td><td>Menu item text (nav text)</td></tr>
+<tr><td><code>--nav-muted</code></td><td class="num"><span class="chip" style="background:#526277"></span>#526277</td><td class="num"><span class="chip" style="background:#9aa8bd"></span>#9aa8bd</td><td>Menu group labels, user subtitle</td></tr>
+<tr><td><code>--nav-active-bg</code></td><td class="num"><span class="chip" style="background:#d3efec"></span>#d3efec</td><td class="num"><span class="chip" style="background:#134e4a"></span>#134e4a</td><td>Active menu item fill (nav active)</td></tr>
+<tr><td><code>--nav-active-text</code></td><td class="num"><span class="chip" style="background:#0b4a45"></span>#0b4a45</td><td class="num"><span class="chip" style="background:#ccfbf1"></span>#ccfbf1</td><td>Active menu item text</td></tr>
+<tr><td><code>--nav-bar</code></td><td class="num"><span class="chip" style="background:#0f766e"></span>#0f766e</td><td class="num"><span class="chip" style="background:#2dd4bf"></span>#2dd4bf</td><td>Active item edge bar, meal-band bar</td></tr>
+<tr><td><code>--nav-cta-bg</code></td><td class="num"><span class="chip" style="background:#0f766e"></span>#0f766e</td><td class="num"><span class="chip" style="background:#2dd4bf"></span>#2dd4bf</td><td>Menu "Add food" button fill</td></tr>
+<tr><td><code>--nav-cta-text</code></td><td class="num"><span class="chip" style="background:#ffffff"></span>#ffffff</td><td class="num"><span class="chip" style="background:#042f2e"></span>#042f2e</td><td>Menu "Add food" button text</td></tr>
+<tr><td><code>--nav-border</code></td><td class="num"><span class="chip" style="background:#d7dee7"></span>#d7dee7</td><td class="num"><span class="chip" style="background:#2d3b55"></span>#2d3b55</td><td>Menu edge line</td></tr>
+<tr><td><code>--th-bg</code></td><td class="num"><span class="chip" style="background:#1e293b"></span>#1e293b</td><td class="num"><span class="chip" style="background:#26354f"></span>#26354f</td><td>Table header band (header bg)</td></tr>
+<tr><td><code>--th-text</code></td><td class="num"><span class="chip" style="background:#f8fafc"></span>#f8fafc</td><td class="num"><span class="chip" style="background:#f8fafc"></span>#f8fafc</td><td>Table header text (header text)</td></tr>
+<tr><td><code>--th-line</code></td><td class="num"><span class="chip" style="background:#2dd4bf"></span>#2dd4bf</td><td class="num"><span class="chip" style="background:#2dd4bf"></span>#2dd4bf</td><td>Line under the table header</td></tr>
+<tr><td><code>--band-bg</code></td><td class="num"><span class="chip" style="background:#e4f2f1"></span>#e4f2f1</td><td class="num"><span class="chip" style="background:#123a3a"></span>#123a3a</td><td>Meal band tint (band)</td></tr>
+<tr><td><code>--zebra</code></td><td class="num"><span class="chip" style="background:rgba(15,23,42,0.035)"></span>rgba(15,23,42,0.035)</td><td class="num"><span class="chip" style="background:rgba(255,255,255,0.04)"></span>rgba(255,255,255,0.04)</td><td>Zebra row tint</td></tr>
+<tr><td><code>--foot</code></td><td class="num"><span class="chip" style="background:#edf1f6"></span>#edf1f6</td><td class="num"><span class="chip" style="background:#1b2740"></span>#1b2740</td><td>Total and Remaining row fill</td></tr>
+<tr><td><code>--row-hover</code></td><td class="num"><span class="chip" style="background:rgba(15,118,110,0.07)"></span>rgba(15,118,110,0.07)</td><td class="num"><span class="chip" style="background:rgba(45,212,191,0.10)"></span>rgba(45,212,191,0.10)</td><td>Row hover tint</td></tr>
+<tr><td><code>--success</code></td><td class="num"><span class="chip" style="background:#14703a"></span>#14703a</td><td class="num"><span class="chip" style="background:#4ade80"></span>#4ade80</td><td>Remaining: under goal ("742 left")</td></tr>
+<tr><td><code>--warning</code></td><td class="num"><span class="chip" style="background:#8a5a00"></span>#8a5a00</td><td class="num"><span class="chip" style="background:#fbbf24"></span>#fbbf24</td><td>Remaining: slightly over, up to 10% ("18 over")</td></tr>
+<tr><td><code>--error</code></td><td class="num"><span class="chip" style="background:#a8102a"></span>#a8102a</td><td class="num"><span class="chip" style="background:#f87171"></span>#f87171</td><td>Remaining: well over, more than 10% ("20 over")</td></tr>
+<tr><td><code>--carbs</code></td><td class="num"><span class="chip" style="background:#2563eb"></span>#2563eb</td><td class="num"><span class="chip" style="background:#8ec5fc"></span>#8ec5fc</td><td>Carbs macro</td></tr>
+<tr><td><code>--fat</code></td><td class="num"><span class="chip" style="background:#c2410c"></span>#c2410c</td><td class="num"><span class="chip" style="background:#fb923c"></span>#fb923c</td><td>Fat macro</td></tr>
+<tr><td><code>--protein</code></td><td class="num"><span class="chip" style="background:#3b1a85"></span>#3b1a85</td><td class="num"><span class="chip" style="background:#8160f6"></span>#8160f6</td><td>Protein macro (changed from #7c3aed)</td></tr>
+<tr><td><code>--fiber</code></td><td class="num"><span class="chip" style="background:#c026d3"></span>#c026d3</td><td class="num"><span class="chip" style="background:#f472d0"></span>#f472d0</td><td>Fiber macro (changed from #0f766e)</td></tr>
+<tr><td><code>--logo-a</code></td><td class="num"><span class="chip" style="background:#0d9488"></span>#0d9488</td><td class="num"><span class="chip" style="background:#2dd4bf"></span>#2dd4bf</td><td>Logo mark gradient start</td></tr>
+<tr><td><code>--logo-b</code></td><td class="num"><span class="chip" style="background:#0f766e"></span>#0f766e</td><td class="num"><span class="chip" style="background:#14b8a6"></span>#14b8a6</td><td>Logo mark gradient end</td></tr>
+<tr><td><code>--logo-ink</code></td><td class="num"><span class="chip" style="background:#ffffff"></span>#ffffff</td><td class="num"><span class="chip" style="background:#042f2e"></span>#042f2e</td><td>Logo glyph</td></tr>
+</tbody></table></div>
+<h3>WCAG 2.2 AA contrast (calculated)</h3><div class="scroller" tabindex="0" role="region" aria-label="Option B contrast results, scrolls sideways on small screens"><table class="ptbl"><caption class="sr">Option B WCAG 2.2 AA contrast results (lowest value across the listed backgrounds)</caption><thead><tr><th scope="col">Check</th><th scope="col">Colours (lowest of the backgrounds)</th><th scope="col">Light</th><th scope="col">Dark</th><th scope="col">Needed (AA)</th></tr></thead><tbody><tr><td>Menu item text</td><td>navText on menu</td><td class="num">13.35:1 <span class="ok">Pass</span></td><td class="num">14.48:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Menu group label (TRACK, FOODS)</td><td>navMuted on menu</td><td class="num">5.68:1 <span class="ok">Pass</span></td><td class="num">7.40:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Menu active item text</td><td>navActiveText on active pill</td><td class="num">8.33:1 <span class="ok">Pass</span></td><td class="num">8.41:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Menu "Add food" button text</td><td>navCtaText on button</td><td class="num">5.47:1 <span class="ok">Pass</span></td><td class="num">7.77:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Menu active edge bar (non-text)</td><td>navBar on menu</td><td class="num">5.00:1 <span class="ok">Pass</span></td><td class="num">9.59:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Table header text</td><td>thText on header</td><td class="num">13.98:1 <span class="ok">Pass</span></td><td class="num">11.78:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Meal band text</td><td>text on band</td><td class="num">15.53:1 <span class="ok">Pass</span></td><td class="num">11.33:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Primary button text</td><td>onBrand on brand</td><td class="num">5.47:1 <span class="ok">Pass</span></td><td class="num">7.77:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Primary button text, hover</td><td>onBrand on hover</td><td class="num">7.58:1 <span class="ok">Pass</span></td><td class="num">9.78:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Link / secondary button text</td><td>brandInk on white / zebra row</td><td class="num">5.11:1 <span class="ok">Pass</span></td><td class="num">8.25:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Body text</td><td>text on white / zebra row / page</td><td class="num">16.67:1 <span class="ok">Pass</span></td><td class="num">14.02:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Secondary text</td><td>text2 on white / zebra row / page</td><td class="num">7.08:1 <span class="ok">Pass</span></td><td class="num">8.53:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Remaining: "742 left" (under)</td><td>success on white / Remaining row / badge tint</td><td class="num">5.02:1 <span class="ok">Pass</span></td><td class="num">7.29:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Remaining: "18 over" (slightly over)</td><td>warning on white / Remaining row / badge tint</td><td class="num">4.86:1 <span class="ok">Pass</span></td><td class="num">7.61:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Remaining: "20 over" (well over)</td><td>error on white / Remaining row / badge tint</td><td class="num">5.90:1 <span class="ok">Pass</span></td><td class="num">5.06:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Input and outline border (non-text)</td><td>fieldBorder on white</td><td class="num">4.76:1 <span class="ok">Pass</span></td><td class="num">5.00:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Focus ring (brand-ink, non-text)</td><td>brandInk on white</td><td class="num">5.47:1 <span class="ok">Pass</span></td><td class="num">9.15:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Carbs colour (dot, bar, underline; non-text)</td><td>carbs on white / zebra row</td><td class="num">4.83:1 <span class="ok">Pass</span></td><td class="num">8.44:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Fat colour (dot, bar, underline; non-text)</td><td>fat on white / zebra row</td><td class="num">4.84:1 <span class="ok">Pass</span></td><td class="num">6.79:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Protein colour (dot, bar, underline; non-text)</td><td>protein on white / zebra row</td><td class="num">11.73:1 <span class="ok">Pass</span></td><td class="num">3.61:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Fiber colour (dot, bar, underline; non-text)</td><td>fiber on white / zebra row</td><td class="num">4.40:1 <span class="ok">Pass</span></td><td class="num">5.97:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Logo glyph on logo mark (non-text)</td><td>logoInk on logo / logo</td><td class="num">3.74:1 <span class="ok">Pass</span></td><td class="num">5.81:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr></tbody></table></div>
+<p class="cap">Lowest ratio in this option: 3.74:1 light, 3.61:1 dark (those lowest values are non-text items that need 3:1). Every text pair needs 4.5:1.</p>
+</section>
+<section class="sec" id="opt-c" aria-labelledby="h-c">
+<div class="frame-t"><h2 id="h-c">C. Indigo Pop <span class="cap" style="font-weight:400">(indigo + fresh green)</span></h2></div>
+<p class="lede"><b>Mood:</b> Confident modern SaaS: deep indigo menu, violet-blue actions, mint highlights.</p>
+
+<div class="scroller" tabindex="0" role="region" aria-label="Option C mock-up, scrolls sideways on small screens">
+<div class="mock pal-c" role="group" aria-label="Option C mock-up of the Diary and Add food screens (static)">
+<nav class="side" aria-label="Main menu (static mock-up)">
+<span class="logo"><span class="mark"><svg class="i" aria-hidden="true"><use href="#i-leaf"/></svg></span>Nutrelia</span>
+<span class="cta"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg>Add food</span>
+<div role="group" aria-label="Track"><span class="sep" aria-hidden="true">Track</span><ul>
+<li class="ni"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg>Home</li><li class="ni on" aria-current="page"><svg class="i" aria-hidden="true"><use href="#i-book"/></svg>Diary</li><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-flame"/></svg>Activity</li><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg>Progress</li></ul></div>
+<div role="group" aria-label="Foods"><span class="sep" aria-hidden="true">Foods</span><ul><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-apple"/></svg>My Foods</li></ul></div>
+<div role="group" aria-label="Social"><span class="sep" aria-hidden="true">Social</span><ul><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg>Friends</li></ul></div>
+<div class="ucard" role="group" aria-label="Account"><div class="who"><span class="av" aria-hidden="true">PS</span><span class="t"><b>Priya S.</b><small>Signed in</small></span></div><div class="ulinks"><span><svg class="i" aria-hidden="true"><use href="#i-gear"/></svg>Settings</span><span><svg class="i" aria-hidden="true"><use href="#i-out"/></svg>Log out</span></div></div>
+</nav>
+<div class="col"><div class="main">
+<div class="head"><div><h3 class="h1">Diary</h3><span class="muted">Wednesday, 18 November 2026</span></div><span class="tools"><span class="btn btn-g btn-round" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-left"/></svg></span><span class="btn btn-s">Today</span><span class="btn btn-g btn-round" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-right"/></svg></span><span class="btn btn-p"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg>Add food</span></span></div>
+<div class="card"><table class="tbl"><colgroup><col><col style="width:92px"><col style="width:108px"><col style="width:92px"><col style="width:116px"><col style="width:100px"></colgroup><caption class="sr">Lunch: foods and nutrients</caption>
+<thead><tr class="mealband"><th scope="colgroup">Lunch</th><th scope="colgroup" colspan="5" class="n">612 kcal</th></tr><tr><th scope="col">Food</th><th scope="col" class="n">Calories</th><th scope="col" class="n m carbs">Carbs (g)</th><th scope="col" class="n m fat">Fat (g)</th><th scope="col" class="n m protein">Protein (g)</th><th scope="col" class="n m fiber">Fiber (g)</th></tr></thead>
+<tbody><tr><td><span class="fcell"><span>Chapathi<span class="muted"> &ndash; 2 medium</span></span></span></td><td class="n">208</td><td class="n">36</td><td class="n">4</td><td class="n">6</td><td class="n">4</td></tr><tr><td><span class="fcell"><span>Dal Tadka<span class="muted"> &ndash; 1 cup</span></span></span></td><td class="n">198</td><td class="n">30</td><td class="n">4</td><td class="n">11</td><td class="n">5</td></tr><tr><td><span class="fcell"><span>Rice, white, cooked<span class="muted"> &ndash; 1 cup</span></span></span></td><td class="n">206</td><td class="n">45</td><td class="n">0</td><td class="n">4</td><td class="n">1</td></tr></tbody>
+<tfoot><tr class="tot"><td>Lunch total</td><td class="n">612</td><td class="n">111</td><td class="n">8</td><td class="n">21</td><td class="n">10</td></tr><tr class="rem"><td>Remaining today</td><td class="n s-ok">742 left</td><td class="n s-warn">18 over</td><td class="n s-bad">20 over</td><td class="n s-ok">34 left</td><td class="n s-ok">12 left</td></tr></tfoot></table></div>
+<div class="legend" role="list" aria-label="What the Remaining colours mean"><span role="listitem"><span class="badge ok">742 left</span> Under goal</span><span role="listitem"><span class="badge warn">18 over</span> Slightly over (up to 10% above goal)</span><span role="listitem"><span class="badge bad">20 over</span> Well over (more than 10% above goal)</span></div>
+<h3 class="h2">Add food to Lunch</h3>
+<div class="tools"><label class="field" style="flex:1"><span class="sr">Search foods</span><svg class="i" aria-hidden="true"><use href="#i-search"/></svg><input placeholder="Search foods or type what you ate"></label><span class="btn btn-s">Select several</span></div>
+<p class="small muted">The list updates as you type.</p>
+<ul class="fl" aria-label="Sample food rows"><li class="fr"><div class="fr-1"><span class="fr-name">Chapathi (whole wheat)</span><span class="badge ok"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Verified</span></div>
+<div class="fr-2">Nutrelia &middot; 1 medium (40 g) &middot; 104 kcal</div>
+<div class="fr-3"><span class="fr-n" aria-label="Nutrition for 1 serving"><span class="kc"><b class="num">104</b> kcal</span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn carbs"><i class="dot"></i>Carbs <b class="num">18 g</b></span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn fat"><i class="dot"></i>Fat <b class="num">2 g</b></span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn protein"><i class="dot"></i>Protein <b class="num">3 g</b></span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn fiber"><i class="dot"></i>Fiber <b class="num">2 g</b></span></span>
+<span class="fr-amt"><label for="c-sv1">Servings</label><input id="c-sv1" class="cmp num" inputmode="decimal" value="1"><label for="c-sz1">Serving size</label><select id="c-sz1" class="cmp"><option>1 medium (40 g)</option></select></span></div>
+<button type="button" class="btn btn-s btn-round fr-add" aria-label="Add Chapathi (whole wheat) to Lunch" title="Add Chapathi (whole wheat) to Lunch"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></button></li><li class="fr hov"><div class="fr-1"><span class="fr-name">Dal Tadka</span><span class="badge ok"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Verified</span></div>
+<div class="fr-2">Nutrelia &middot; 1 cup (200 g) &middot; 198 kcal</div>
+<div class="fr-3"><span class="fr-n" aria-label="Nutrition for 2 servings"><span class="kc"><b class="num">396</b> kcal</span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn carbs"><i class="dot"></i>Carbs <b class="num">60 g</b></span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn fat"><i class="dot"></i>Fat <b class="num">8 g</b></span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn protein"><i class="dot"></i>Protein <b class="num">22 g</b></span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn fiber"><i class="dot"></i>Fiber <b class="num">10 g</b></span></span>
+<span class="fr-amt"><label for="c-sv2">Servings</label><input id="c-sv2" class="cmp num" inputmode="decimal" value="2"><label for="c-sz2">Serving size</label><select id="c-sz2" class="cmp"><option>1 cup (200 g)</option></select></span></div>
+<button type="button" class="btn btn-s btn-round fr-add" aria-label="Add Dal Tadka to Lunch" title="Add Dal Tadka to Lunch"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></button></li></ul>
+</div></div></div></div>
+<p class="cap">The mock follows your device's light or dark setting. Shows: side menu, meal table with all three Remaining states, and two Add food rows with + button, Servings and Serving size.</p>
+<div class="two">
+<div class="card pc"><h3>Pros</h3><ul><li>Most "modern SaaS" feel; strong, memorable brand colour.</li><li>Dark indigo menu gives the page clear structure, like today, but in a fresher colour.</li><li>Mint-green accents (menu button, active bar, header line) tie back to food and "good".</li></ul></div>
+<div class="card pc"><h3>Cons</h3><ul><li>Indigo is cool and tech-like; it says "software" more than "food".</li><li>Carbs, protein and fiber all had to be recoloured so none blends into the indigo brand; carbs (cyan) sit closest to the brand (colour distance 18.7 light, 12.8 dark), the weakest brand separation of the four.</li><li>Two accent hues (indigo and mint) are more to maintain.</li><li>Still a heavy dark menu, which Santhosh may feel is too close to today.</li></ul></div></div>
+<div class="card"><h3>Macro colours</h3><p><b>All of carbs, protein and fiber change</b> because blue and violet sit next to the indigo brand: carbs become cyan #0e7490 (dark #22d3ee), protein becomes magenta #c026d3 (dark #e879f9) and fiber becomes lime #5c9a0b (dark #d9f06a). Fat stays orange #c2410c.</p>
+<p class="cap">Separation measured as perceptual colour distance (OKLab, x100; 20 or more is clearly different at dot size; every macro pair meets it). Light mode: closest macro pair 21.9 (carbs / fiber); closest macro to a status colour 10.1 (fat / error); closest macro to the brand 18.7 (carbs / brandInk); the three status colours are 14.6 or more apart; brand to success green 30.0. Dark mode: 22.6 / 10.6 / 12.8 / 19.6. Macros always carry a written label, and macro colours are used only for dots, bars and header underlines (3:1 is required for those), never as text colour, so colour is never the only cue.</p></div>
+<div class="card"><h3>Remaining status colours (words always shown)</h3>
+<ul><li><span class="chip" style="background:#14703a"></span><b>Under goal</b> <code>--success</code> #14703a: shows "742 left".</li>
+<li><span class="chip" style="background:#8a5a00"></span><b>Slightly over (up to 10%)</b> <code>--warning</code> #8a5a00: shows "18 over".</li>
+<li><span class="chip" style="background:#a8102a"></span><b>Well over (more than 10%)</b> <code>--error</code> #a8102a: shows "20 over".</li></ul>
+<p class="cap">Chosen for this palette: darker than Round 4 so they pass 4.5:1 even on tinted badges and the Remaining row, and the red is a deeper crimson so it never reads as the orange fat macro.</p></div>
+<h3>Full token list</h3><div class="scroller" tabindex="0" role="region" aria-label="Option C token list, scrolls sideways on small screens"><table class="ptbl"><caption class="sr">Option C tokens</caption><thead><tr><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th><th scope="col">Used for</th></tr></thead><tbody>
+<tr><td><code>--bg</code></td><td class="num"><span class="chip" style="background:#f7f7fc"></span>#f7f7fc</td><td class="num"><span class="chip" style="background:#0e0d24"></span>#0e0d24</td><td>Page background</td></tr>
+<tr><td><code>--surface</code></td><td class="num"><span class="chip" style="background:#ffffff"></span>#ffffff</td><td class="num"><span class="chip" style="background:#17163a"></span>#17163a</td><td>Cards, table body, inputs</td></tr>
+<tr><td><code>--surface2</code></td><td class="num"><span class="chip" style="background:#efeffa"></span>#efeffa</td><td class="num"><span class="chip" style="background:#1f1e4a"></span>#1f1e4a</td><td>Hover fill, tracks, chips</td></tr>
+<tr><td><code>--border</code></td><td class="num"><span class="chip" style="background:#dcdcef"></span>#dcdcef</td><td class="num"><span class="chip" style="background:#35346b"></span>#35346b</td><td>Dividers, card edges</td></tr>
+<tr><td><code>--field-border</code></td><td class="num"><span class="chip" style="background:#70709a"></span>#70709a</td><td class="num"><span class="chip" style="background:#8c8bc4"></span>#8c8bc4</td><td>Input and outline-button border (3:1)</td></tr>
+<tr><td><code>--text</code></td><td class="num"><span class="chip" style="background:#16162f"></span>#16162f</td><td class="num"><span class="chip" style="background:#eef0ff"></span>#eef0ff</td><td>Body text</td></tr>
+<tr><td><code>--text2</code></td><td class="num"><span class="chip" style="background:#4b4b6b"></span>#4b4b6b</td><td class="num"><span class="chip" style="background:#b9bce0"></span>#b9bce0</td><td>Secondary text</td></tr>
+<tr><td><code>--brand</code></td><td class="num"><span class="chip" style="background:#4f46e5"></span>#4f46e5</td><td class="num"><span class="chip" style="background:#818cf8"></span>#818cf8</td><td>Primary button fill (brand)</td></tr>
+<tr><td><code>--brand-hover</code></td><td class="num"><span class="chip" style="background:#4338ca"></span>#4338ca</td><td class="num"><span class="chip" style="background:#a5b4fc"></span>#a5b4fc</td><td>Primary button hover</td></tr>
+<tr><td><code>--on-brand</code></td><td class="num"><span class="chip" style="background:#ffffff"></span>#ffffff</td><td class="num"><span class="chip" style="background:#1e1b4b"></span>#1e1b4b</td><td>Text on the primary button (on-brand)</td></tr>
+<tr><td><code>--brand-ink</code></td><td class="num"><span class="chip" style="background:#4338ca"></span>#4338ca</td><td class="num"><span class="chip" style="background:#a5b4fc"></span>#a5b4fc</td><td>Links, secondary button text, focus ring</td></tr>
+<tr><td><code>--nav-bg</code></td><td class="num"><span class="chip" style="background:#1e1b4b"></span>#1e1b4b</td><td class="num"><span class="chip" style="background:#0a0920"></span>#0a0920</td><td>Side menu background (nav bg)</td></tr>
+<tr><td><code>--nav-text</code></td><td class="num"><span class="chip" style="background:#eef2ff"></span>#eef2ff</td><td class="num"><span class="chip" style="background:#e0e7ff"></span>#e0e7ff</td><td>Menu item text (nav text)</td></tr>
+<tr><td><code>--nav-muted</code></td><td class="num"><span class="chip" style="background:#c7d2fe"></span>#c7d2fe</td><td class="num"><span class="chip" style="background:#a5b4fc"></span>#a5b4fc</td><td>Menu group labels, user subtitle</td></tr>
+<tr><td><code>--nav-active-bg</code></td><td class="num"><span class="chip" style="background:#e0e7ff"></span>#e0e7ff</td><td class="num"><span class="chip" style="background:#3730a3"></span>#3730a3</td><td>Active menu item fill (nav active)</td></tr>
+<tr><td><code>--nav-active-text</code></td><td class="num"><span class="chip" style="background:#312e81"></span>#312e81</td><td class="num"><span class="chip" style="background:#ffffff"></span>#ffffff</td><td>Active menu item text</td></tr>
+<tr><td><code>--nav-bar</code></td><td class="num"><span class="chip" style="background:#34d399"></span>#34d399</td><td class="num"><span class="chip" style="background:#34d399"></span>#34d399</td><td>Active item edge bar, meal-band bar</td></tr>
+<tr><td><code>--nav-cta-bg</code></td><td class="num"><span class="chip" style="background:#34d399"></span>#34d399</td><td class="num"><span class="chip" style="background:#34d399"></span>#34d399</td><td>Menu "Add food" button fill</td></tr>
+<tr><td><code>--nav-cta-text</code></td><td class="num"><span class="chip" style="background:#052e16"></span>#052e16</td><td class="num"><span class="chip" style="background:#052e16"></span>#052e16</td><td>Menu "Add food" button text</td></tr>
+<tr><td><code>--nav-border</code></td><td class="num"><span class="chip" style="background:#1e1b4b"></span>#1e1b4b</td><td class="num"><span class="chip" style="background:#35346b"></span>#35346b</td><td>Menu edge line</td></tr>
+<tr><td><code>--th-bg</code></td><td class="num"><span class="chip" style="background:#312e81"></span>#312e81</td><td class="num"><span class="chip" style="background:#312e81"></span>#312e81</td><td>Table header band (header bg)</td></tr>
+<tr><td><code>--th-text</code></td><td class="num"><span class="chip" style="background:#eef2ff"></span>#eef2ff</td><td class="num"><span class="chip" style="background:#eef2ff"></span>#eef2ff</td><td>Table header text (header text)</td></tr>
+<tr><td><code>--th-line</code></td><td class="num"><span class="chip" style="background:#34d399"></span>#34d399</td><td class="num"><span class="chip" style="background:#34d399"></span>#34d399</td><td>Line under the table header</td></tr>
+<tr><td><code>--band-bg</code></td><td class="num"><span class="chip" style="background:#ececfc"></span>#ececfc</td><td class="num"><span class="chip" style="background:#25235a"></span>#25235a</td><td>Meal band tint (band)</td></tr>
+<tr><td><code>--zebra</code></td><td class="num"><span class="chip" style="background:rgba(22,22,47,0.035)"></span>rgba(22,22,47,0.035)</td><td class="num"><span class="chip" style="background:rgba(255,255,255,0.04)"></span>rgba(255,255,255,0.04)</td><td>Zebra row tint</td></tr>
+<tr><td><code>--foot</code></td><td class="num"><span class="chip" style="background:#eeeefa"></span>#eeeefa</td><td class="num"><span class="chip" style="background:#1f1e4a"></span>#1f1e4a</td><td>Total and Remaining row fill</td></tr>
+<tr><td><code>--row-hover</code></td><td class="num"><span class="chip" style="background:rgba(79,70,229,0.07)"></span>rgba(79,70,229,0.07)</td><td class="num"><span class="chip" style="background:rgba(129,140,248,0.12)"></span>rgba(129,140,248,0.12)</td><td>Row hover tint</td></tr>
+<tr><td><code>--success</code></td><td class="num"><span class="chip" style="background:#14703a"></span>#14703a</td><td class="num"><span class="chip" style="background:#4ade80"></span>#4ade80</td><td>Remaining: under goal ("742 left")</td></tr>
+<tr><td><code>--warning</code></td><td class="num"><span class="chip" style="background:#8a5a00"></span>#8a5a00</td><td class="num"><span class="chip" style="background:#fbbf24"></span>#fbbf24</td><td>Remaining: slightly over, up to 10% ("18 over")</td></tr>
+<tr><td><code>--error</code></td><td class="num"><span class="chip" style="background:#a8102a"></span>#a8102a</td><td class="num"><span class="chip" style="background:#f87171"></span>#f87171</td><td>Remaining: well over, more than 10% ("20 over")</td></tr>
+<tr><td><code>--carbs</code></td><td class="num"><span class="chip" style="background:#0e7490"></span>#0e7490</td><td class="num"><span class="chip" style="background:#22d3ee"></span>#22d3ee</td><td>Carbs macro (changed from #2563eb)</td></tr>
+<tr><td><code>--fat</code></td><td class="num"><span class="chip" style="background:#c2410c"></span>#c2410c</td><td class="num"><span class="chip" style="background:#fb923c"></span>#fb923c</td><td>Fat macro</td></tr>
+<tr><td><code>--protein</code></td><td class="num"><span class="chip" style="background:#c026d3"></span>#c026d3</td><td class="num"><span class="chip" style="background:#e879f9"></span>#e879f9</td><td>Protein macro (changed from #7c3aed)</td></tr>
+<tr><td><code>--fiber</code></td><td class="num"><span class="chip" style="background:#5c9a0b"></span>#5c9a0b</td><td class="num"><span class="chip" style="background:#d9f06a"></span>#d9f06a</td><td>Fiber macro (changed from #0f766e)</td></tr>
+<tr><td><code>--logo-a</code></td><td class="num"><span class="chip" style="background:#6366f1"></span>#6366f1</td><td class="num"><span class="chip" style="background:#818cf8"></span>#818cf8</td><td>Logo mark gradient start</td></tr>
+<tr><td><code>--logo-b</code></td><td class="num"><span class="chip" style="background:#4f46e5"></span>#4f46e5</td><td class="num"><span class="chip" style="background:#6366f1"></span>#6366f1</td><td>Logo mark gradient end</td></tr>
+<tr><td><code>--logo-ink</code></td><td class="num"><span class="chip" style="background:#ffffff"></span>#ffffff</td><td class="num"><span class="chip" style="background:#1e1b4b"></span>#1e1b4b</td><td>Logo glyph</td></tr>
+</tbody></table></div>
+<h3>WCAG 2.2 AA contrast (calculated)</h3><div class="scroller" tabindex="0" role="region" aria-label="Option C contrast results, scrolls sideways on small screens"><table class="ptbl"><caption class="sr">Option C WCAG 2.2 AA contrast results (lowest value across the listed backgrounds)</caption><thead><tr><th scope="col">Check</th><th scope="col">Colours (lowest of the backgrounds)</th><th scope="col">Light</th><th scope="col">Dark</th><th scope="col">Needed (AA)</th></tr></thead><tbody><tr><td>Menu item text</td><td>navText on menu</td><td class="num">14.30:1 <span class="ok">Pass</span></td><td class="num">15.89:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Menu group label (TRACK, FOODS)</td><td>navMuted on menu</td><td class="num">10.72:1 <span class="ok">Pass</span></td><td class="num">9.82:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Menu active item text</td><td>navActiveText on active pill</td><td class="num">9.27:1 <span class="ok">Pass</span></td><td class="num">9.93:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Menu "Add food" button text</td><td>navCtaText on button</td><td class="num">7.75:1 <span class="ok">Pass</span></td><td class="num">7.75:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Menu active edge bar (non-text)</td><td>navBar on menu</td><td class="num">8.32:1 <span class="ok">Pass</span></td><td class="num">10.18:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Table header text</td><td>thText on header</td><td class="num">10.22:1 <span class="ok">Pass</span></td><td class="num">10.22:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Meal band text</td><td>text on band</td><td class="num">15.10:1 <span class="ok">Pass</span></td><td class="num">12.64:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Primary button text</td><td>onBrand on brand</td><td class="num">6.29:1 <span class="ok">Pass</span></td><td class="num">5.36:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Primary button text, hover</td><td>onBrand on hover</td><td class="num">7.90:1 <span class="ok">Pass</span></td><td class="num">8.02:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Link / secondary button text</td><td>brandInk on white / zebra row</td><td class="num">7.38:1 <span class="ok">Pass</span></td><td class="num">7.88:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Body text</td><td>text on white / zebra row / page</td><td class="num">16.48:1 <span class="ok">Pass</span></td><td class="num">13.88:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Secondary text</td><td>text2 on white / zebra row / page</td><td class="num">7.79:1 <span class="ok">Pass</span></td><td class="num">8.48:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Remaining: "742 left" (under)</td><td>success on white / Remaining row / badge tint</td><td class="num">5.02:1 <span class="ok">Pass</span></td><td class="num">7.56:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Remaining: "18 over" (slightly over)</td><td>warning on white / Remaining row / badge tint</td><td class="num">4.86:1 <span class="ok">Pass</span></td><td class="num">7.82:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Remaining: "20 over" (well over)</td><td>error on white / Remaining row / badge tint</td><td class="num">5.90:1 <span class="ok">Pass</span></td><td class="num">5.12:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Input and outline border (non-text)</td><td>fieldBorder on white</td><td class="num">4.69:1 <span class="ok">Pass</span></td><td class="num">5.45:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Focus ring (brand-ink, non-text)</td><td>brandInk on white</td><td class="num">7.90:1 <span class="ok">Pass</span></td><td class="num">8.69:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Carbs colour (dot, bar, underline; non-text)</td><td>carbs on white / zebra row</td><td class="num">5.00:1 <span class="ok">Pass</span></td><td class="num">8.70:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Fat colour (dot, bar, underline; non-text)</td><td>fat on white / zebra row</td><td class="num">4.84:1 <span class="ok">Pass</span></td><td class="num">6.94:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Protein colour (dot, bar, underline; non-text)</td><td>protein on white / zebra row</td><td class="num">4.40:1 <span class="ok">Pass</span></td><td class="num">6.39:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Fiber colour (dot, bar, underline; non-text)</td><td>fiber on white / zebra row</td><td class="num">3.22:1 <span class="ok">Pass</span></td><td class="num">12.44:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Logo glyph on logo mark (non-text)</td><td>logoInk on logo / logo</td><td class="num">4.47:1 <span class="ok">Pass</span></td><td class="num">3.58:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr></tbody></table></div>
+<p class="cap">Lowest ratio in this option: 3.22:1 light, 3.58:1 dark (those lowest values are non-text items that need 3:1). Every text pair needs 4.5:1.</p>
+</section>
+<section class="sec" id="opt-d" aria-labelledby="h-d">
+<div class="frame-t"><h2 id="h-d">D. Graphite & Lime <span class="cap" style="font-weight:400">(neutral graphite + one lime spark)</span></h2></div>
+<p class="lede"><b>Mood:</b> Sharp, sporty and editorial: graphite and white, with a single lime highlight.</p>
+<p class="note"><b>Why this fourth option:</b> I first considered warm coral or saffron nodding to Indian food, but tested it and rejected it: an orange or coral brand collides with the orange fat macro and the red "well over" state, and a saffron brand collides with the amber "slightly over" state. Remaining status would then be ambiguous. A neutral graphite brand removes every collision, lets the nutrition colours speak, and looks the most current and premium.</p>
+<div class="scroller" tabindex="0" role="region" aria-label="Option D mock-up, scrolls sideways on small screens">
+<div class="mock pal-d" role="group" aria-label="Option D mock-up of the Diary and Add food screens (static)">
+<nav class="side" aria-label="Main menu (static mock-up)">
+<span class="logo"><span class="mark"><svg class="i" aria-hidden="true"><use href="#i-leaf"/></svg></span>Nutrelia</span>
+<span class="cta"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg>Add food</span>
+<div role="group" aria-label="Track"><span class="sep" aria-hidden="true">Track</span><ul>
+<li class="ni"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg>Home</li><li class="ni on" aria-current="page"><svg class="i" aria-hidden="true"><use href="#i-book"/></svg>Diary</li><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-flame"/></svg>Activity</li><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg>Progress</li></ul></div>
+<div role="group" aria-label="Foods"><span class="sep" aria-hidden="true">Foods</span><ul><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-apple"/></svg>My Foods</li></ul></div>
+<div role="group" aria-label="Social"><span class="sep" aria-hidden="true">Social</span><ul><li class="ni"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg>Friends</li></ul></div>
+<div class="ucard" role="group" aria-label="Account"><div class="who"><span class="av" aria-hidden="true">PS</span><span class="t"><b>Priya S.</b><small>Signed in</small></span></div><div class="ulinks"><span><svg class="i" aria-hidden="true"><use href="#i-gear"/></svg>Settings</span><span><svg class="i" aria-hidden="true"><use href="#i-out"/></svg>Log out</span></div></div>
+</nav>
+<div class="col"><div class="main">
+<div class="head"><div><h3 class="h1">Diary</h3><span class="muted">Wednesday, 18 November 2026</span></div><span class="tools"><span class="btn btn-g btn-round" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-left"/></svg></span><span class="btn btn-s">Today</span><span class="btn btn-g btn-round" aria-hidden="true"><svg class="i" aria-hidden="true"><use href="#i-right"/></svg></span><span class="btn btn-p"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg>Add food</span></span></div>
+<div class="card"><table class="tbl"><colgroup><col><col style="width:92px"><col style="width:108px"><col style="width:92px"><col style="width:116px"><col style="width:100px"></colgroup><caption class="sr">Lunch: foods and nutrients</caption>
+<thead><tr class="mealband"><th scope="colgroup">Lunch</th><th scope="colgroup" colspan="5" class="n">612 kcal</th></tr><tr><th scope="col">Food</th><th scope="col" class="n">Calories</th><th scope="col" class="n m carbs">Carbs (g)</th><th scope="col" class="n m fat">Fat (g)</th><th scope="col" class="n m protein">Protein (g)</th><th scope="col" class="n m fiber">Fiber (g)</th></tr></thead>
+<tbody><tr><td><span class="fcell"><span>Chapathi<span class="muted"> &ndash; 2 medium</span></span></span></td><td class="n">208</td><td class="n">36</td><td class="n">4</td><td class="n">6</td><td class="n">4</td></tr><tr><td><span class="fcell"><span>Dal Tadka<span class="muted"> &ndash; 1 cup</span></span></span></td><td class="n">198</td><td class="n">30</td><td class="n">4</td><td class="n">11</td><td class="n">5</td></tr><tr><td><span class="fcell"><span>Rice, white, cooked<span class="muted"> &ndash; 1 cup</span></span></span></td><td class="n">206</td><td class="n">45</td><td class="n">0</td><td class="n">4</td><td class="n">1</td></tr></tbody>
+<tfoot><tr class="tot"><td>Lunch total</td><td class="n">612</td><td class="n">111</td><td class="n">8</td><td class="n">21</td><td class="n">10</td></tr><tr class="rem"><td>Remaining today</td><td class="n s-ok">742 left</td><td class="n s-warn">18 over</td><td class="n s-bad">20 over</td><td class="n s-ok">34 left</td><td class="n s-ok">12 left</td></tr></tfoot></table></div>
+<div class="legend" role="list" aria-label="What the Remaining colours mean"><span role="listitem"><span class="badge ok">742 left</span> Under goal</span><span role="listitem"><span class="badge warn">18 over</span> Slightly over (up to 10% above goal)</span><span role="listitem"><span class="badge bad">20 over</span> Well over (more than 10% above goal)</span></div>
+<h3 class="h2">Add food to Lunch</h3>
+<div class="tools"><label class="field" style="flex:1"><span class="sr">Search foods</span><svg class="i" aria-hidden="true"><use href="#i-search"/></svg><input placeholder="Search foods or type what you ate"></label><span class="btn btn-s">Select several</span></div>
+<p class="small muted">The list updates as you type.</p>
+<ul class="fl" aria-label="Sample food rows"><li class="fr"><div class="fr-1"><span class="fr-name">Chapathi (whole wheat)</span><span class="badge ok"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Verified</span></div>
+<div class="fr-2">Nutrelia &middot; 1 medium (40 g) &middot; 104 kcal</div>
+<div class="fr-3"><span class="fr-n" aria-label="Nutrition for 1 serving"><span class="kc"><b class="num">104</b> kcal</span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn carbs"><i class="dot"></i>Carbs <b class="num">18 g</b></span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn fat"><i class="dot"></i>Fat <b class="num">2 g</b></span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn protein"><i class="dot"></i>Protein <b class="num">3 g</b></span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn fiber"><i class="dot"></i>Fiber <b class="num">2 g</b></span></span>
+<span class="fr-amt"><label for="d-sv1">Servings</label><input id="d-sv1" class="cmp num" inputmode="decimal" value="1"><label for="d-sz1">Serving size</label><select id="d-sz1" class="cmp"><option>1 medium (40 g)</option></select></span></div>
+<button type="button" class="btn btn-s btn-round fr-add" aria-label="Add Chapathi (whole wheat) to Lunch" title="Add Chapathi (whole wheat) to Lunch"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></button></li><li class="fr hov"><div class="fr-1"><span class="fr-name">Dal Tadka</span><span class="badge ok"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Verified</span></div>
+<div class="fr-2">Nutrelia &middot; 1 cup (200 g) &middot; 198 kcal</div>
+<div class="fr-3"><span class="fr-n" aria-label="Nutrition for 2 servings"><span class="kc"><b class="num">396</b> kcal</span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn carbs"><i class="dot"></i>Carbs <b class="num">60 g</b></span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn fat"><i class="dot"></i>Fat <b class="num">8 g</b></span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn protein"><i class="dot"></i>Protein <b class="num">22 g</b></span><span class="sepd" aria-hidden="true">&middot;</span>
+<span class="mn fiber"><i class="dot"></i>Fiber <b class="num">10 g</b></span></span>
+<span class="fr-amt"><label for="d-sv2">Servings</label><input id="d-sv2" class="cmp num" inputmode="decimal" value="2"><label for="d-sz2">Serving size</label><select id="d-sz2" class="cmp"><option>1 cup (200 g)</option></select></span></div>
+<button type="button" class="btn btn-s btn-round fr-add" aria-label="Add Dal Tadka to Lunch" title="Add Dal Tadka to Lunch"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg></button></li></ul>
+</div></div></div></div>
+<p class="cap">The mock follows your device's light or dark setting. Shows: side menu, meal table with all three Remaining states, and two Add food rows with + button, Servings and Serving size.</p>
+<div class="two">
+<div class="card pc"><h3>Pros</h3><ul><li>Neutral brand means the four macro colours and the three status colours do all the colour work; nothing can clash.</li><li>Very modern and editorial; the single lime highlight is distinctive and memorable.</li><li>Highest text contrast of the four (primary button 17.7:1).</li></ul></div>
+<div class="card pc"><h3>Cons</h3><ul><li>A near-black primary button can feel stern for a health app.</li><li>Lime can only be used on dark surfaces (never as text on white), so it appears only in the menu and header line.</li><li>Dark menu is heavy, as today. In dark mode the primary button flips to white-on-black.</li><li>Least warmth or "food" feeling.</li></ul></div></div>
+<div class="card"><h3>Macro colours</h3><p>Carbs (blue #2563eb) and fat (orange #c2410c) are unchanged. <b>Protein changes</b> from violet #7c3aed to deep indigo-violet #3b1a85 (dark mode #8160f6) and <b>fiber changes</b> from teal #0f766e to magenta #c026d3 (dark #f472d0). The brand is neutral graphite, so no macro can clash with it.</p>
+<p class="cap">Separation measured as perceptual colour distance (OKLab, x100; 20 or more is clearly different at dot size; every macro pair meets it). Light mode: closest macro pair 22.7 (carbs / protein); closest macro to a status colour 10.1 (fat / error); closest macro to the brand 20.5 (protein / brand); the three status colours are 14.6 or more apart; brand to success green 29.7. Dark mode: 22.0 / 10.6 / 20.4 / 18.7. Macros always carry a written label, and macro colours are used only for dots, bars and header underlines (3:1 is required for those), never as text colour, so colour is never the only cue.</p></div>
+<div class="card"><h3>Remaining status colours (words always shown)</h3>
+<ul><li><span class="chip" style="background:#14703a"></span><b>Under goal</b> <code>--success</code> #14703a: shows "742 left".</li>
+<li><span class="chip" style="background:#8a5a00"></span><b>Slightly over (up to 10%)</b> <code>--warning</code> #8a5a00: shows "18 over".</li>
+<li><span class="chip" style="background:#a8102a"></span><b>Well over (more than 10%)</b> <code>--error</code> #a8102a: shows "20 over".</li></ul>
+<p class="cap">Chosen for this palette: darker than Round 4 so they pass 4.5:1 even on tinted badges and the Remaining row, and the red is a deeper crimson so it never reads as the orange fat macro.</p></div>
+<h3>Full token list</h3><div class="scroller" tabindex="0" role="region" aria-label="Option D token list, scrolls sideways on small screens"><table class="ptbl"><caption class="sr">Option D tokens</caption><thead><tr><th scope="col">Token</th><th scope="col">Light</th><th scope="col">Dark</th><th scope="col">Used for</th></tr></thead><tbody>
+<tr><td><code>--bg</code></td><td class="num"><span class="chip" style="background:#f7f7f8"></span>#f7f7f8</td><td class="num"><span class="chip" style="background:#09090b"></span>#09090b</td><td>Page background</td></tr>
+<tr><td><code>--surface</code></td><td class="num"><span class="chip" style="background:#ffffff"></span>#ffffff</td><td class="num"><span class="chip" style="background:#18181b"></span>#18181b</td><td>Cards, table body, inputs</td></tr>
+<tr><td><code>--surface2</code></td><td class="num"><span class="chip" style="background:#f0f0f2"></span>#f0f0f2</td><td class="num"><span class="chip" style="background:#27272a"></span>#27272a</td><td>Hover fill, tracks, chips</td></tr>
+<tr><td><code>--border</code></td><td class="num"><span class="chip" style="background:#dcdce0"></span>#dcdce0</td><td class="num"><span class="chip" style="background:#3f3f46"></span>#3f3f46</td><td>Dividers, card edges</td></tr>
+<tr><td><code>--field-border</code></td><td class="num"><span class="chip" style="background:#71717a"></span>#71717a</td><td class="num"><span class="chip" style="background:#8a8a96"></span>#8a8a96</td><td>Input and outline-button border (3:1)</td></tr>
+<tr><td><code>--text</code></td><td class="num"><span class="chip" style="background:#18181b"></span>#18181b</td><td class="num"><span class="chip" style="background:#fafafa"></span>#fafafa</td><td>Body text</td></tr>
+<tr><td><code>--text2</code></td><td class="num"><span class="chip" style="background:#52525b"></span>#52525b</td><td class="num"><span class="chip" style="background:#c4c4cc"></span>#c4c4cc</td><td>Secondary text</td></tr>
+<tr><td><code>--brand</code></td><td class="num"><span class="chip" style="background:#18181b"></span>#18181b</td><td class="num"><span class="chip" style="background:#fafafa"></span>#fafafa</td><td>Primary button fill (brand)</td></tr>
+<tr><td><code>--brand-hover</code></td><td class="num"><span class="chip" style="background:#3f3f46"></span>#3f3f46</td><td class="num"><span class="chip" style="background:#e4e4e7"></span>#e4e4e7</td><td>Primary button hover</td></tr>
+<tr><td><code>--on-brand</code></td><td class="num"><span class="chip" style="background:#ffffff"></span>#ffffff</td><td class="num"><span class="chip" style="background:#18181b"></span>#18181b</td><td>Text on the primary button (on-brand)</td></tr>
+<tr><td><code>--brand-ink</code></td><td class="num"><span class="chip" style="background:#18181b"></span>#18181b</td><td class="num"><span class="chip" style="background:#fafafa"></span>#fafafa</td><td>Links, secondary button text, focus ring</td></tr>
+<tr><td><code>--nav-bg</code></td><td class="num"><span class="chip" style="background:#18181b"></span>#18181b</td><td class="num"><span class="chip" style="background:#09090b"></span>#09090b</td><td>Side menu background (nav bg)</td></tr>
+<tr><td><code>--nav-text</code></td><td class="num"><span class="chip" style="background:#fafafa"></span>#fafafa</td><td class="num"><span class="chip" style="background:#fafafa"></span>#fafafa</td><td>Menu item text (nav text)</td></tr>
+<tr><td><code>--nav-muted</code></td><td class="num"><span class="chip" style="background:#a1a1aa"></span>#a1a1aa</td><td class="num"><span class="chip" style="background:#a1a1aa"></span>#a1a1aa</td><td>Menu group labels, user subtitle</td></tr>
+<tr><td><code>--nav-active-bg</code></td><td class="num"><span class="chip" style="background:#2e2e33"></span>#2e2e33</td><td class="num"><span class="chip" style="background:#27272a"></span>#27272a</td><td>Active menu item fill (nav active)</td></tr>
+<tr><td><code>--nav-active-text</code></td><td class="num"><span class="chip" style="background:#ffffff"></span>#ffffff</td><td class="num"><span class="chip" style="background:#ffffff"></span>#ffffff</td><td>Active menu item text</td></tr>
+<tr><td><code>--nav-bar</code></td><td class="num"><span class="chip" style="background:#a3e635"></span>#a3e635</td><td class="num"><span class="chip" style="background:#a3e635"></span>#a3e635</td><td>Active item edge bar, meal-band bar</td></tr>
+<tr><td><code>--nav-cta-bg</code></td><td class="num"><span class="chip" style="background:#bef264"></span>#bef264</td><td class="num"><span class="chip" style="background:#bef264"></span>#bef264</td><td>Menu "Add food" button fill</td></tr>
+<tr><td><code>--nav-cta-text</code></td><td class="num"><span class="chip" style="background:#1a2e05"></span>#1a2e05</td><td class="num"><span class="chip" style="background:#1a2e05"></span>#1a2e05</td><td>Menu "Add food" button text</td></tr>
+<tr><td><code>--nav-border</code></td><td class="num"><span class="chip" style="background:#18181b"></span>#18181b</td><td class="num"><span class="chip" style="background:#27272a"></span>#27272a</td><td>Menu edge line</td></tr>
+<tr><td><code>--th-bg</code></td><td class="num"><span class="chip" style="background:#27272a"></span>#27272a</td><td class="num"><span class="chip" style="background:#3f3f46"></span>#3f3f46</td><td>Table header band (header bg)</td></tr>
+<tr><td><code>--th-text</code></td><td class="num"><span class="chip" style="background:#fafafa"></span>#fafafa</td><td class="num"><span class="chip" style="background:#fafafa"></span>#fafafa</td><td>Table header text (header text)</td></tr>
+<tr><td><code>--th-line</code></td><td class="num"><span class="chip" style="background:#a3e635"></span>#a3e635</td><td class="num"><span class="chip" style="background:#a3e635"></span>#a3e635</td><td>Line under the table header</td></tr>
+<tr><td><code>--band-bg</code></td><td class="num"><span class="chip" style="background:#f1f5e4"></span>#f1f5e4</td><td class="num"><span class="chip" style="background:#232a12"></span>#232a12</td><td>Meal band tint (band)</td></tr>
+<tr><td><code>--zebra</code></td><td class="num"><span class="chip" style="background:rgba(24,24,27,0.035)"></span>rgba(24,24,27,0.035)</td><td class="num"><span class="chip" style="background:rgba(255,255,255,0.04)"></span>rgba(255,255,255,0.04)</td><td>Zebra row tint</td></tr>
+<tr><td><code>--foot</code></td><td class="num"><span class="chip" style="background:#efeff1"></span>#efeff1</td><td class="num"><span class="chip" style="background:#27272a"></span>#27272a</td><td>Total and Remaining row fill</td></tr>
+<tr><td><code>--row-hover</code></td><td class="num"><span class="chip" style="background:rgba(101,163,13,0.08)"></span>rgba(101,163,13,0.08)</td><td class="num"><span class="chip" style="background:rgba(163,230,53,0.08)"></span>rgba(163,230,53,0.08)</td><td>Row hover tint</td></tr>
+<tr><td><code>--success</code></td><td class="num"><span class="chip" style="background:#14703a"></span>#14703a</td><td class="num"><span class="chip" style="background:#4ade80"></span>#4ade80</td><td>Remaining: under goal ("742 left")</td></tr>
+<tr><td><code>--warning</code></td><td class="num"><span class="chip" style="background:#8a5a00"></span>#8a5a00</td><td class="num"><span class="chip" style="background:#facc15"></span>#facc15</td><td>Remaining: slightly over, up to 10% ("18 over")</td></tr>
+<tr><td><code>--error</code></td><td class="num"><span class="chip" style="background:#a8102a"></span>#a8102a</td><td class="num"><span class="chip" style="background:#f87171"></span>#f87171</td><td>Remaining: well over, more than 10% ("20 over")</td></tr>
+<tr><td><code>--carbs</code></td><td class="num"><span class="chip" style="background:#2563eb"></span>#2563eb</td><td class="num"><span class="chip" style="background:#8ec5fc"></span>#8ec5fc</td><td>Carbs macro</td></tr>
+<tr><td><code>--fat</code></td><td class="num"><span class="chip" style="background:#c2410c"></span>#c2410c</td><td class="num"><span class="chip" style="background:#fb923c"></span>#fb923c</td><td>Fat macro</td></tr>
+<tr><td><code>--protein</code></td><td class="num"><span class="chip" style="background:#3b1a85"></span>#3b1a85</td><td class="num"><span class="chip" style="background:#8160f6"></span>#8160f6</td><td>Protein macro (changed from #7c3aed)</td></tr>
+<tr><td><code>--fiber</code></td><td class="num"><span class="chip" style="background:#c026d3"></span>#c026d3</td><td class="num"><span class="chip" style="background:#f472d0"></span>#f472d0</td><td>Fiber macro (changed from #0f766e)</td></tr>
+<tr><td><code>--logo-a</code></td><td class="num"><span class="chip" style="background:#d9f99d"></span>#d9f99d</td><td class="num"><span class="chip" style="background:#d9f99d"></span>#d9f99d</td><td>Logo mark gradient start</td></tr>
+<tr><td><code>--logo-b</code></td><td class="num"><span class="chip" style="background:#84cc16"></span>#84cc16</td><td class="num"><span class="chip" style="background:#84cc16"></span>#84cc16</td><td>Logo mark gradient end</td></tr>
+<tr><td><code>--logo-ink</code></td><td class="num"><span class="chip" style="background:#1a2e05"></span>#1a2e05</td><td class="num"><span class="chip" style="background:#1a2e05"></span>#1a2e05</td><td>Logo glyph</td></tr>
+</tbody></table></div>
+<h3>WCAG 2.2 AA contrast (calculated)</h3><div class="scroller" tabindex="0" role="region" aria-label="Option D contrast results, scrolls sideways on small screens"><table class="ptbl"><caption class="sr">Option D WCAG 2.2 AA contrast results (lowest value across the listed backgrounds)</caption><thead><tr><th scope="col">Check</th><th scope="col">Colours (lowest of the backgrounds)</th><th scope="col">Light</th><th scope="col">Dark</th><th scope="col">Needed (AA)</th></tr></thead><tbody><tr><td>Menu item text</td><td>navText on menu</td><td class="num">16.97:1 <span class="ok">Pass</span></td><td class="num">19.06:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Menu group label (TRACK, FOODS)</td><td>navMuted on menu</td><td class="num">6.91:1 <span class="ok">Pass</span></td><td class="num">7.76:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Menu active item text</td><td>navActiveText on active pill</td><td class="num">13.51:1 <span class="ok">Pass</span></td><td class="num">14.89:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Menu "Add food" button text</td><td>navCtaText on button</td><td class="num">11.19:1 <span class="ok">Pass</span></td><td class="num">11.19:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Menu active edge bar (non-text)</td><td>navBar on menu</td><td class="num">11.75:1 <span class="ok">Pass</span></td><td class="num">13.19:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Table header text</td><td>thText on header</td><td class="num">14.27:1 <span class="ok">Pass</span></td><td class="num">10.01:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Meal band text</td><td>text on band</td><td class="num">15.96:1 <span class="ok">Pass</span></td><td class="num">14.26:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Primary button text</td><td>onBrand on brand</td><td class="num">17.72:1 <span class="ok">Pass</span></td><td class="num">16.97:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Primary button text, hover</td><td>onBrand on hover</td><td class="num">10.44:1 <span class="ok">Pass</span></td><td class="num">13.96:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Link / secondary button text</td><td>brandInk on white / zebra row</td><td class="num">16.54:1 <span class="ok">Pass</span></td><td class="num">15.39:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Body text</td><td>text on white / zebra row / page</td><td class="num">16.54:1 <span class="ok">Pass</span></td><td class="num">15.39:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Secondary text</td><td>text2 on white / zebra row / page</td><td class="num">7.22:1 <span class="ok">Pass</span></td><td class="num">9.26:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Remaining: "742 left" (under)</td><td>success on white / Remaining row / badge tint</td><td class="num">5.02:1 <span class="ok">Pass</span></td><td class="num">7.62:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Remaining: "18 over" (slightly over)</td><td>warning on white / Remaining row / badge tint</td><td class="num">4.86:1 <span class="ok">Pass</span></td><td class="num">8.45:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Remaining: "20 over" (well over)</td><td>error on white / Remaining row / badge tint</td><td class="num">5.90:1 <span class="ok">Pass</span></td><td class="num">5.26:1 <span class="ok">Pass</span></td><td class="num">4.5:1</td></tr>
+<tr><td>Input and outline border (non-text)</td><td>fieldBorder on white</td><td class="num">4.83:1 <span class="ok">Pass</span></td><td class="num">5.19:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Focus ring (brand-ink, non-text)</td><td>brandInk on white</td><td class="num">17.72:1 <span class="ok">Pass</span></td><td class="num">16.97:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Carbs colour (dot, bar, underline; non-text)</td><td>carbs on white / zebra row</td><td class="num">4.82:1 <span class="ok">Pass</span></td><td class="num">8.83:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Fat colour (dot, bar, underline; non-text)</td><td>fat on white / zebra row</td><td class="num">4.83:1 <span class="ok">Pass</span></td><td class="num">7.10:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Protein colour (dot, bar, underline; non-text)</td><td>protein on white / zebra row</td><td class="num">11.72:1 <span class="ok">Pass</span></td><td class="num">3.78:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Fiber colour (dot, bar, underline; non-text)</td><td>fiber on white / zebra row</td><td class="num">4.40:1 <span class="ok">Pass</span></td><td class="num">6.24:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr>
+<tr><td>Logo glyph on logo mark (non-text)</td><td>logoInk on logo / logo</td><td class="num">7.40:1 <span class="ok">Pass</span></td><td class="num">7.40:1 <span class="ok">Pass</span></td><td class="num">3:1</td></tr></tbody></table></div>
+<p class="cap">Lowest ratio in this option: 4.40:1 light, 3.78:1 dark (those lowest values are non-text items that need 3:1). Every text pair needs 4.5:1.</p>
+</section>
+<section class="sec" aria-labelledby="h-next"><h2 id="h-next">Next step</h2>
+<p>Pick one option (or ask for a mix, for example "B but with the dark menu from C"). I will then apply the chosen tokens to the design-system block and every screen in the next round, and update the UX spec tokens (section 7). Nothing in <code>nutrelia-screens.html</code> or the UX spec has been changed for this comparison.</p>
+</section>
+</div>
+</body>
+</html>
