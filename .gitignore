@@ -7,3 +7,5 @@
 .claude/permission-level
 .claude/tmp/*
 !.claude/tmp/.gitkeep
+# Personal MyFitnessPal exports (real food diary data) - never commit
+MyFitnessPal_*.pdf

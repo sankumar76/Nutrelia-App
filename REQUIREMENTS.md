@@ -489,7 +489,7 @@ Dashboard shows today's calorie ring, macro bars, water, net calories, weight tr
 ### 13.1 Repository and workflow
 
 - Code lives in the **private** GitHub repository `sankumar76/Nutrelia-App` (`https://github.com/sankumar76/Nutrelia-App.git`).
-- Branching: `main` (stable) + feature branches per milestone; Conventional Commits referencing requirement IDs (e.g. `feat(LOG-07): free-text parser`).
+- Branching: `master` (stable) + feature branches per milestone; Conventional Commits referencing requirement IDs (e.g. `feat(LOG-07): free-text parser`).
 - Repo includes `README.md` (setup, env vars, scripts), `.env.example`, `docker-compose.yml`, seed scripts (admin user, activity METs, INDB reference, sample public foods), and GitHub Actions CI running lint, type-check and tests on every push. **\[Added\]**
 - No secrets, API keys or personal data committed.
 
